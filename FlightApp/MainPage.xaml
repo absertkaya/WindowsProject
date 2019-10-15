@@ -8,7 +8,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-    </Grid>
+    <NavigationView x:Name="NavView" 
+                    SelectionChanged="NavView_SelectionChanged" 
+                    Loaded="NavView_Loaded"
+                    BackRequested="NavView_BackRequested">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Tag="home" Icon="Home" Content="Home"/>
+            <NavigationViewItemSeparator/>
+            <NavigationViewItem Tag="login" Icon="OtherUser" Content="Login"/>
+            <NavigationViewItem Tag="register" Icon="AddFriend" Content="Register"/>
+        </NavigationView.MenuItems>
+        <Frame x:Name="ContentFrame" Margin="20" Navigated="On_Navigated" HorizontalAlignment="Left" Width="Auto" Height="Auto" VerticalAlignment="Top"/>
+    </NavigationView>
 </Page>
