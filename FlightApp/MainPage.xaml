@@ -17,6 +17,24 @@
             <NavigationViewItemSeparator/>
             <NavigationViewItem Tag="login" Icon="OtherUser" Content="Login"/>
             <NavigationViewItem Tag="register" Icon="AddFriend" Content="Register"/>
+            <NavigationViewItemSeparator/>
+            <NavigationViewItemHeader Content="FOR STAFF"/>
+            <NavigationViewItem Tag="createAnnouncement" Icon="Add" Content="Create Announcement"/>
+            <NavigationViewItem Tag="handleOrder" Icon="Manage" Content="Handle Orders"/>
+            <NavigationViewItem Tag="passengers" Icon="Admin" Content="Passengers"/>
+            <NavigationViewItemSeparator/>
+            <NavigationViewItemHeader Content="FOR PASSENGER"/>
+            <NavigationViewItem Tag="placeOrder" Icon="Attach" Content="Place Order"/>
+            <NavigationViewItem Tag="orderHistory" Icon="OpenFile" Content="Order History"/>
+            <NavigationViewItem Tag="createMessage" Icon="Message" Content="Create Message"/>
+            <NavigationViewItem Tag="viewMessages" Icon="View" Content="View Messages"/>
+            <NavigationViewItem Tag="music" Icon="MusicInfo" Content="Music"/>
+            <NavigationViewItem Tag="video" Icon="Video" Content="Video"/>
+            <NavigationViewItem Tag="games" Icon="Play" Content="Games"/>
+            <NavigationViewItemSeparator/>
+            <NavigationViewItemHeader Content="FOR BOTH"/>
+            <NavigationViewItem Tag="viewAnnouncements" Icon="ViewAll" Content="View Announcements"/>
+            <NavigationViewItem Tag="flightDetails" Icon="Globe" Content="Flight Details"/>
         </NavigationView.MenuItems>
         <Frame x:Name="ContentFrame" Margin="20" Navigated="On_Navigated" HorizontalAlignment="Left" Width="Auto" Height="Auto" VerticalAlignment="Top"/>
     </NavigationView>

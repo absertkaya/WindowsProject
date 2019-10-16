@@ -25,7 +25,18 @@ namespace FlightApp
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type page)> {
             ("home", typeof(HomePage)),
             ("login", typeof(LoginPage)),
-            ("register", typeof(RegisterPage))
+            ("register", typeof(RegisterPage)),
+            ("createAnnouncement", typeof(CreateAnnouncementPage)),
+            ("handleOrder", typeof(HandleOrderPage)),
+            ("placeOrder", typeof(MakeOrderPage)),
+            ("viewAnnouncements", typeof(ViewAnnouncementsPage)),
+            ("createMessage", typeof(CreateMessagePage)),
+            ("viewMessages", typeof(ViewMessagesPage)),
+            ("orderHistory", typeof(OrderHistoryPage)),
+            ("games", typeof(GamesPage)),
+            ("music", typeof(MusicPage)),
+            ("video", typeof(VideoPage)),
+            ("passengers", typeof(PassengersPage))
         };
 
         public MainPage()
