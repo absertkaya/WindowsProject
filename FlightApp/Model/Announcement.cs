@@ -9,11 +9,7 @@ namespace FlightApp.Model
 {
     public class Announcement : ObservableObject
     {
-        private int _id;
-
-        public int AnnouncementId {
-            get;
-        }
+        public int AnnouncementId { get; set; }
 
         private DateTime _timestamp;
 
