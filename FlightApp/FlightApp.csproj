@@ -125,6 +125,7 @@
     <Compile Include="CreateMessagePage.xaml.cs">
       <DependentUpon>CreateMessagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\DummyData.cs" />
     <Compile Include="FlightDetailsPage.xaml.cs">
       <DependentUpon>FlightDetailsPage.xaml</DependentUpon>
     </Compile>
@@ -146,6 +147,21 @@
     <Compile Include="MakeOrderPage.xaml.cs">
       <DependentUpon>MakeOrderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Announcement.cs" />
+    <Compile Include="Model\ClassType.cs" />
+    <Compile Include="Model\Companion.cs" />
+    <Compile Include="Model\Flight.cs" />
+    <Compile Include="Model\Message.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Passenger.cs" />
+    <Compile Include="Model\PassengerFlight.cs" />
+    <Compile Include="Model\Plane.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductOrder.cs" />
+    <Compile Include="Model\ProductType.cs" />
+    <Compile Include="Model\Seat.cs" />
+    <Compile Include="Model\Staff.cs" />
+    <Compile Include="Model\StaffFlight.cs" />
     <Compile Include="MusicPage.xaml.cs">
       <DependentUpon>MusicPage.xaml</DependentUpon>
     </Compile>
@@ -159,16 +175,18 @@
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="VideoPage.xaml.cs">
       <DependentUpon>VideoPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewAnnouncementsPage.xaml.cs">
-      <DependentUpon>ViewAnnouncementsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewMessagesPage.xaml.cs">
       <DependentUpon>ViewMessagesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AnnouncementViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\AnnouncementView.xaml.cs">
+      <DependentUpon>AnnouncementView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -247,11 +265,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewAnnouncementsPage.xaml">
+    <Page Include="ViewMessagesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewMessagesPage.xaml">
+    <Page Include="View\AnnouncementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -264,10 +282,7 @@
       <Version>5.4.1.1</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

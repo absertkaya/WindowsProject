@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightApp.View;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace FlightApp
             ("createAnnouncement", typeof(CreateAnnouncementPage)),
             ("handleOrder", typeof(HandleOrderPage)),
             ("placeOrder", typeof(MakeOrderPage)),
-            ("viewAnnouncements", typeof(ViewAnnouncementsPage)),
+            ("viewAnnouncements", typeof(AnnouncementView)),
             ("createMessage", typeof(CreateMessagePage)),
             ("viewMessages", typeof(ViewMessagesPage)),
             ("orderHistory", typeof(OrderHistoryPage)),
