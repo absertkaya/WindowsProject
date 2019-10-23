@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <ListView ItemsSource="{Binding Announcements}">
+    <ListView x:Name="lv" ItemsSource="{Binding Announcements}">
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="m:Announcement">
                 <Grid>

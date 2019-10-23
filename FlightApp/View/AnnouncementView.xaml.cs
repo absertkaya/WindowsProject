@@ -1,8 +1,12 @@
-﻿using FlightApp.ViewModel;
+﻿using FlightApp.Model;
+using FlightApp.ViewModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -23,11 +27,22 @@ namespace FlightApp.View
     /// </summary>
     public sealed partial class AnnouncementView : Page
     {
+
+        public AnnouncementViewModel viewModel { get; set; }
+
         public AnnouncementView()
         {
             this.InitializeComponent();
+            
+        }
 
-            DataContext = new AnnouncementViewModel();
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            viewModel = new AnnouncementViewModel();
+            await viewModel.CallService();
+            DataContext = viewModel;
+
         }
     }
 }

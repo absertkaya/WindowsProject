@@ -17,19 +17,14 @@ namespace FlightApp.ViewModel
 
         public AnnouncementViewModel()
         {
-            //call api
-            Announcements = new ObservableCollection<Announcement>();
         }
 
-        public async void CallService()
+        public async Task CallService()
         {
             HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(new Uri("https://localhost:44300/api/announcements/get_all"));
-            var lst = JsonConvert.DeserializeObject<IList<Announcement>>(json);
-            foreach (var announcement in lst)
-            {
-                Announcements.Add(announcement);
-            }
+            var json = await client.GetStringAsync(new Uri("http://localhost:49681/api/Announcement/get_all"));
+            var lst = JsonConvert.DeserializeObject<ObservableCollection<Announcement>>(json);
+            Announcements = lst;
         }
     }
 }
