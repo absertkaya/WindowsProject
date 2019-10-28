@@ -1,0 +1,41 @@
+﻿<Page
+    x:Class="FlightApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FlightApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <NavigationView x:Name="NavView" 
+                    SelectionChanged="NavView_SelectionChanged" 
+                    Loaded="NavView_Loaded"
+                    IsBackButtonVisible="Collapsed"
+                    IsSettingsVisible="False">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Tag="home" Icon="Home" Content="Home"/>
+            <!-- passenger -->
+            <NavigationViewItem Visibility="Collapsed"  Tag="announcements" Icon="Pin" Content="Announcements"/>
+            <NavigationViewItem Visibility="Collapsed" Tag="shop" Icon="Shop" Content="Shop"/>
+            <NavigationViewItem Visibility="Collapsed" Tag="messenger" Icon="Message" Content="Messenger"/>
+            <NavigationViewItem Visibility="Collapsed" Tag="music" Icon="Audio" Content="Music"/>
+            <NavigationViewItem Visibility="Collapsed" Tag="video" Icon="Video" Content="Video"/>
+            <NavigationViewItem Visibility="Collapsed" Tag="games" Icon="Play" Content="Games"/>
+            <!-- staff -->
+            <NavigationViewItem Visibility="Collapsed" Tag="manageAnnouncement" Icon="Pin" Content="Announcements"/>
+            <NavigationViewItem Visibility="Collapsed" Tag="handleOrder" Icon="Shop" Content="Orders"/>
+            <NavigationViewItem Visibility="Collapsed" Tag="passengers" Icon="OtherUser" Content="Manage Passengers"/>
+            <!-- both -->
+            <NavigationViewItem Visibility="Collapsed" Tag="flightDetails" Icon="Globe" Content="Flight Details"/>
+        </NavigationView.MenuItems>
+        <NavigationView.PaneFooter>
+            <StackPanel x:Name="NavViewFooter">
+                <NavigationViewItem Tag="login" Icon="Contact" Content="Login"/>
+                <!-- both -->
+                <NavigationViewItem Visibility="Collapsed" Tag="logout" Icon="Permissions" Content="Log out"/>
+            </StackPanel>
+        </NavigationView.PaneFooter>
+        <Frame x:Name="ContentFrame" Margin="20" Navigated="On_Navigated" HorizontalAlignment="Left" Width="Auto" Height="Auto" VerticalAlignment="Top"/>
+    </NavigationView>
+</Page>
