@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Data\AnnouncementRepository.cs" />
     <Compile Include="Data\UserRepository.cs" />
+    <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
