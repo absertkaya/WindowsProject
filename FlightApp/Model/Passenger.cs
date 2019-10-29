@@ -1,13 +1,14 @@
-﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace FlightApp.Model
 {
-    public class Passenger : ObservableObject
+    public class Passenger : ApplicationUser
     {
+        public IList<PassengerFlight> PassengerFlights { get; set; }
+
+        public Passenger()
+        {
+            PassengerFlights = new List<PassengerFlight>();
+        }
     }
 }
