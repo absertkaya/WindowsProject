@@ -58,7 +58,7 @@ namespace FlightApp.Data
             return false;
         }
 
-        // DTO
+        #region DTOs
         private class LoginDTO
         {
             [Required]
@@ -87,5 +87,6 @@ namespace FlightApp.Data
             [Required]
             public DateTime BirthDate { get; set; }
         }
+        #endregion
     }
 }
