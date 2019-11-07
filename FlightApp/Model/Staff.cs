@@ -6,6 +6,5 @@ namespace FlightApp.Model
     {
         public IList<Announcement> SentAnnouncements { get; set; }
         public Flight Flight { get; set; }
-        public int FlightId { get; set; }
     }
 }

@@ -14,5 +14,6 @@ namespace FlightApp.Model
         [EmailAddress]
         public string Email { get; set; }
         public UserType Type { get; set; }
+        public int FlightId { get; set; }
     }
 }
