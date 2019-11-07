@@ -5,14 +5,11 @@ namespace FlightApp.Model
 {
     public class Order
     {
-        public int OrderId { get; set; }
-        public DateTime OrderDate { get; set; }
+        public int Id { get; set; }
+        public DateTime TimeStamp { get; set; }
 
         public IList<OrderLine> OrderLines { get; set; }
-
-        public Order()
-        {
-            OrderLines = new List<OrderLine>();
-        }
+        public OrderStatus OrderStatus { get; set; }
+        public Passenger Customer { get; set; }
     }
 }

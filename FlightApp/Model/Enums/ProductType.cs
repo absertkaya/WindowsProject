@@ -2,6 +2,6 @@
 {
     public enum ProductType
     {
-        FOOD, DRINK
+        COSMETICS, COLLECTORS, FOOD, DRINKS, SNACKS
     }
 }

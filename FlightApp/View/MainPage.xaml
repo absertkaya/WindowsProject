@@ -31,9 +31,9 @@
         </NavigationView.MenuItems>
         <NavigationView.PaneFooter>
             <StackPanel x:Name="NavViewFooter">
-                <NavigationViewItem Tag="login" Icon="Contact" Content="Login"/>
+                <NavigationViewItem Tag="login" Tapped="Login" Icon="Contact" Content="Login"/>
                 <!-- both -->
-                <NavigationViewItem Visibility="Collapsed" Tag="logout" Icon="Permissions" Content="Log out"/>
+                <NavigationViewItem Visibility="Collapsed" Tag="logout" Tapped="Logout" Icon="Permissions" Content="Log out"/>
             </StackPanel>
         </NavigationView.PaneFooter>
         <Frame x:Name="ContentFrame" Margin="20" Navigated="On_Navigated" HorizontalAlignment="Left" Width="Auto" Height="Auto" VerticalAlignment="Top"/>

@@ -4,11 +4,11 @@ namespace FlightApp.Model
 {
     public class Passenger : ApplicationUser
     {
-        public IList<PassengerFlight> PassengerFlights { get; set; }
-
-        public Passenger()
-        {
-            PassengerFlights = new List<PassengerFlight>();
-        }
+        public Seat Seat { get; set; }
+        public int FlightId { get; set; }
+        public IList<Order> Orders { get; set; }
+        public IList<Message> SentMessages { get; set; }
+        public IList<Message> ReceivedMessages { get; set; }
+        public IList<Friend> Friends { get; set; }
     }
 }

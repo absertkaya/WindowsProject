@@ -1,42 +1,16 @@
 ﻿using FlightApp.Model;
+using FlightApp.Utils;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Windows.Web.Http;
 
 namespace FlightApp.Data
 {
-    public static class UserRepository
+    public class UserRepository
     {
-        public static string Token { get; private set; }
-        public static ApplicationUser User { get; private set; }
-
-        public static async Task<bool> RegisterAsync(Passenger user, string password, string passwordConfirmation)
-        {
-            RegisterDTO registerDTO = new RegisterDTO() {
-                Email = user.Email,
-                Password = password,
-
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                PasswordConfirmation = passwordConfirmation,
-                BirthDate = user.BirthDate
-            };
-            string content = JsonConvert.SerializeObject(registerDTO);
-
-            HttpClient client = new HttpClient();
-            HttpResponseMessage res = await client.PostAsync(new Uri("http://localhost:49681/api/Account"),
-                new HttpStringContent(content, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
-
-            if (res.IsSuccessStatusCode)
-            {
-                Token = JsonConvert.DeserializeObject<string>(res.Content.ToString());
-                return true;
-            }
-            return false;
-        }
-
         public static async Task<bool> LoginAsync(string email, string password)
         {
             LoginDTO loginDTO = new LoginDTO()
@@ -47,12 +21,15 @@ namespace FlightApp.Data
             string content = JsonConvert.SerializeObject(loginDTO);
 
             HttpClient client = new HttpClient();
-            HttpResponseMessage res = await client.PostAsync(new Uri("http://localhost:49681/api/Account/login"),
+            HttpResponseMessage res = await client.PostAsync(new Uri("http://localhost:49681/api/Account"),
                 new HttpStringContent(content, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
 
             if (res.IsSuccessStatusCode)
             {
-                Token = JsonConvert.DeserializeObject<string>(res.Content.ToString());
+                LoginResponseDTO response = JsonConvert.DeserializeObject<LoginResponseDTO>(res.Content.ToString());
+                UserService serv = UserService.GetInstance();
+                serv.Token = response.Token;
+                serv.User = response.ToUser();
                 return true;
             }
             return false;
@@ -68,24 +45,51 @@ namespace FlightApp.Data
             [Required]
             public string Password { get; set; }
         }
-
-        private class RegisterDTO : LoginDTO
+        private class LoginResponseDTO
         {
-            [Required]
-            [StringLength(255)]
-            public string FirstName { get; set; }
-
-            [Required]
-            [StringLength(255)]
-            public string LastName { get; set; }
-
-            [Required]
-            [Compare("Password")]
-            [RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$", ErrorMessage = "Passwords must be at least 8 characters and contain at 3 of 4 of the following: upper case (A-Z), lower case (a-z), number (0-9) and special character (e.g. !@#$%^&*)")]
-            public string PasswordConfirmation { get; set; }
-
-            [Required]
+            public string Token { get; set; }
+            public int Id { get; set; }
             public DateTime BirthDate { get; set; }
+            public string Email { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public List<Friend> Friends { get; set; }
+            public int SeatNr { get; set; }
+            public ClassType SeatClass { get; set; }
+            public int FlightId { get; set; }
+            public UserType Type { get; set; }
+
+            public ApplicationUser ToUser()
+            {
+                switch (Type)
+                {
+                    case UserType.PASSENGER:
+                        return new Passenger
+                        {
+                            Id = this.Id,
+                            BirthDate = this.BirthDate,
+                            Email = this.Email,
+                            FirstName = this.FirstName,
+                            LastName = this.LastName,
+                            Friends = this.Friends,
+                            Seat = new Seat { Nr = SeatNr, ClassType = SeatClass },
+                            Type = this.Type,
+                            FlightId = this.FlightId
+                        };
+                    case UserType.STAFF:
+                        return new Staff
+                        {
+                            Id = this.Id,
+                            BirthDate = this.BirthDate,
+                            Email = this.Email,
+                            FirstName = this.FirstName,
+                            LastName = this.LastName,
+                            Type = this.Type,
+                            FlightId = this.FlightId
+                        };
+                }
+                return null;
+            }
         }
         #endregion
     }

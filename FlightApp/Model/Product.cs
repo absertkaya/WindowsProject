@@ -4,21 +4,13 @@ namespace FlightApp.Model
 {
     public class Product
     {
-        private decimal _price;
-
-        public int ProductId { get; set; }
-        [Required]
+        public int Id { get; set; }
         [MaxLength(100)]
-        public string ProductName { get; set; }
-        [Required]
-        public decimal Price
-        {
-            get { return _price; }
-            set { if (value > 0) _price = value; }
-        }
-        [Required]
-        public int AmountInStock { get; set; }
-        [Required]
-        public ProductType ProductType { get; set; }
+        public string Name { get; set; }
+        [MaxLength(255)]
+        public string Description { get; set; }
+        public string Picture { get; set; }
+        public decimal Price { get; set; }
+        public ProductType Type { get; set; }
     }
 }

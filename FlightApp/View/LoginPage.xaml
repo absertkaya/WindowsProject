@@ -10,9 +10,9 @@
 
     <StackPanel HorizontalAlignment="Left" MinWidth="300" MaxWidth="350">
         <TextBlock Text="Email"/>
-        <TextBox x:Name="emailBox" Margin="0,0,0,10"/>
+        <TextBox Text="{Binding Email, Mode=TwoWay}" Margin="0,0,0,10"/>
         <TextBlock Text="Password"/>
-        <PasswordBox x:Name="passwordBox" Margin="0,0,0,10"/>
-        <Button x:Name="loginButton" Content="Login" Click="LoginButton_Click"/>
+        <PasswordBox Password="{Binding Password, Mode=TwoWay}" Margin="0,0,0,10"/>
+        <Button Content="Login" Click="Button_Click"/>
     </StackPanel>
 </Page>

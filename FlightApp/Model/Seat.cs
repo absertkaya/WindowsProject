@@ -1,14 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace FlightApp.Model
+﻿namespace FlightApp.Model
 {
     public class Seat
     {
-        public int SeatId { get; set; }
-        public int SeatNr { get; set; }
-        [Required]
+        public int Id { get; set; }
+        public int Nr { get; set; }
         public ClassType ClassType { get; set; }
-        [Required]
-        public PassengerFlight Passenger { get; set; }
+        public Passenger Passenger { get; set; }
+        public Flight Flight { get; set; }
     }
 }

@@ -122,6 +122,13 @@
     <Compile Include="Data\AnnouncementRepository.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
+    <Compile Include="Model\Enums\OrderStatus.cs" />
+    <Compile Include="Model\Enums\ProductType.cs" />
+    <Compile Include="Model\Enums\UserType.cs" />
+    <Compile Include="Model\Friend.cs" />
+    <Compile Include="Model\OrderLine.cs" />
+    <Compile Include="Utils\UserService.cs" />
+    <Compile Include="ViewModel\LoginPageViewModel.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -133,20 +140,14 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Announcement.cs" />
-    <Compile Include="Model\ClassType.cs" />
-    <Compile Include="Model\Companion.cs" />
+    <Compile Include="Model\Enums\ClassType.cs" />
     <Compile Include="Model\Flight.cs" />
     <Compile Include="Model\Message.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Passenger.cs" />
-    <Compile Include="Model\PassengerFlight.cs" />
-    <Compile Include="Model\Plane.cs" />
     <Compile Include="Model\Product.cs" />
-    <Compile Include="Model\ProductOrder.cs" />
-    <Compile Include="Model\ProductType.cs" />
     <Compile Include="Model\Seat.cs" />
     <Compile Include="Model\Staff.cs" />
-    <Compile Include="Model\StaffFlight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="ViewModel\AnnouncementViewModel.cs" />
