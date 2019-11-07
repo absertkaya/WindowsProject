@@ -44,6 +44,7 @@ namespace FlightApp
                     if(inst.User is null)
                     {
                         ContentFrame.Navigate(typeof(LoginPage), null, new EntranceNavigationTransitionInfo());
+                        NavView.Header = "Login";
                     }
                     else
                     {
@@ -104,6 +105,7 @@ namespace FlightApp
         private void Login(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(LoginPage), null, new EntranceNavigationTransitionInfo());
+            NavView.Header = "Login";
         }
 
         private void Logout(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
