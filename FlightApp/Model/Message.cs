@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace FlightApp.Model
 {
-    class Message
+    public class Message
     {
+        public Passenger Sender { get; set; }
+        public Passenger Receiver { get; set; }
+        
+        public int Id { get; set; }
+        [MaxLength(255)]
+        public string Content { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }

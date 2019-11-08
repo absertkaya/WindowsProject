@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace FlightApp.Model
 {
-    public class Staff
+    public class Staff : ApplicationUser
     {
+        public IList<Announcement> SentAnnouncements { get; set; }
+        public Flight Flight { get; set; }
     }
 }

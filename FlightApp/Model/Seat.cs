@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FlightApp.Model
+﻿namespace FlightApp.Model
 {
     public class Seat
     {
+        public int Id { get; set; }
+        public int Nr { get; set; }
+        public ClassType ClassType { get; set; }
+        public Passenger Passenger { get; set; }
+        public Flight Flight { get; set; }
     }
 }

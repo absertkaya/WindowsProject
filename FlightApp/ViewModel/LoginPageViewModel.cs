@@ -1,30 +1,27 @@
-﻿using FlightApp.Data;
-using FlightApp.Model;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using FlightApp.Data;
 using Windows.UI.Popups;
 
 namespace FlightApp.ViewModel
 {
-    public class AnnouncementViewModel : ViewModelBase
+    public class LoginPageViewModel : ViewModelBase
     {
-        private IList<Announcement> _announcements;
-        public IList<Announcement> Announcements {
-            get { return _announcements; }
-            set { _announcements = value; RaisePropertyChanged(); }
-        }
+        public string Email { get; set; }
+        public string Password { get; set; }
 
-        public AnnouncementViewModel() {
-            LoadAnnouncements();
-        }
-
-        private async void LoadAnnouncements()
+        public async void Login()
         {
             try
             {
-                Announcements = await AnnouncementRepository.GetAllAsync();
+                if (!await UserRepository.LoginAsync(Email, Password))
+                {
+                    MessageDialog messageDialog = new MessageDialog("Invalid credentials provided. \nPlease try again.");
+                    messageDialog.Commands.Add(new UICommand("Close"));
+                    messageDialog.CancelCommandIndex = 0;
+                    await messageDialog.ShowAsync();
+                }
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 MessageDialog messageDialog = new MessageDialog($"Couldn't establish a connection to the database. \n{e.Message}");
                 messageDialog.Commands.Add(new UICommand("Try again", new UICommandInvokedHandler(this.CommandInvokedHandler)));
@@ -40,7 +37,7 @@ namespace FlightApp.ViewModel
             switch (command.Label)
             {
                 case "Try again":
-                    LoadAnnouncements();
+                    Login();
                     break;
             }
         }

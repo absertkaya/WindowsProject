@@ -1,46 +1,16 @@
-﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FlightApp.Model
 {
-    public class Announcement : ObservableObject
+    public class Announcement
     {
         public int AnnouncementId { get; set; }
-
-        private DateTime _timestamp;
-
-        public DateTime TimeStamp {
-            get { return _timestamp; }
-            set { Set("TimeStamp", ref _timestamp, value); }
-        }
-
-        private string _title;
-
-        public string Title {
-            get { return _title; }
-            set { Set("Title", ref _title, value); }
-        }
-
-        private string _content;
-
-        public string Content {
-            get { return _content; }
-            set { Set("Content", ref _content, value); }
-        }
-
-        public Announcement(string title, string content)
-        {
-            Title = title;
-            Content = content;
-        }
-
-        public Announcement()
-        {
-
-        }
+        public DateTime TimeStamp { get; set; }
+        [MaxLength(100)]
+        public string Title { get; set; }
+        [MaxLength(255)]
+        public string Content { get; set; }
+        public Staff Sender { get; set; }
     }
 }
