@@ -128,8 +128,16 @@
     <Compile Include="Model\Friend.cs" />
     <Compile Include="Model\OrderLine.cs" />
     <Compile Include="Utils\UserService.cs" />
+    <Compile Include="ViewModel\CreateAnnouncementViewModel.cs" />
+    <Compile Include="ViewModel\FlightDetailsViewModel.cs" />
     <Compile Include="ViewModel\LoginPageViewModel.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
+    <Compile Include="View\CreateAnnouncementView.xaml.cs">
+      <DependentUpon>CreateAnnouncementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FlightDetailsView.xaml.cs">
+      <DependentUpon>FlightDetailsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -177,6 +185,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\CreateAnnouncementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FlightDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

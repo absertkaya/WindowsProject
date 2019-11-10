@@ -16,17 +16,17 @@
         <NavigationView.MenuItems>
             <NavigationViewItem Tag="home" Icon="Home" Content="Home"/>
             <!-- passenger -->
-            <NavigationViewItem Visibility="Collapsed"  Tag="announcements" Icon="Pin" Content="Announcements"/>
             <NavigationViewItem Visibility="Collapsed" Tag="shop" Icon="Shop" Content="Shop"/>
             <NavigationViewItem Visibility="Collapsed" Tag="messenger" Icon="Message" Content="Messenger"/>
             <NavigationViewItem Visibility="Collapsed" Tag="music" Icon="Audio" Content="Music"/>
             <NavigationViewItem Visibility="Collapsed" Tag="video" Icon="Video" Content="Video"/>
             <NavigationViewItem Visibility="Collapsed" Tag="games" Icon="Play" Content="Games"/>
             <!-- staff -->
-            <NavigationViewItem Visibility="Collapsed" Tag="manageAnnouncement" Icon="Pin" Content="Announcements"/>
             <NavigationViewItem Visibility="Collapsed" Tag="handleOrder" Icon="Shop" Content="Orders"/>
             <NavigationViewItem Visibility="Collapsed" Tag="passengers" Icon="OtherUser" Content="Manage Passengers"/>
+            <NavigationViewItem Visibility="Collapsed" Tag="createAnnouncement" Icon="Pin" Content="Create Announcement"/>
             <!-- both -->
+            <NavigationViewItem Visibility="Collapsed"  Tag="announcements" Icon="Pin" Content="Announcements"/>
             <NavigationViewItem Visibility="Collapsed" Tag="flightDetails" Icon="Globe" Content="Flight Details"/>
         </NavigationView.MenuItems>
         <NavigationView.PaneFooter>

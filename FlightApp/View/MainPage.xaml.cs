@@ -24,8 +24,7 @@ namespace FlightApp
             ("music", typeof(Page)),
             ("video", typeof(Page)),
             ("games", typeof(Page)),
-
-            ("manageAnnouncement", typeof(Page)),
+            ("createAnnouncement", typeof(CreateAnnouncementView)),
             ("handleOrder", typeof(Page)),
             ("passengers", typeof(Page)),
             ("flightDetails", typeof(Page))
@@ -143,9 +142,10 @@ namespace FlightApp
         private void GenerateStaffMenu()
         {
             IEnumerable<NavigationViewItem> items = NavView.MenuItems.OfType<NavigationViewItem>().Where(i =>
-                     i.Tag.Equals("manageAnnouncement") ||
+                     i.Tag.Equals("announcements") ||
                      i.Tag.Equals("handleOrder") ||
                      i.Tag.Equals("passengers") ||
+                     i.Tag.Equals("createAnnouncement") ||
                      i.Tag.Equals("flightDetails")
             );
 
