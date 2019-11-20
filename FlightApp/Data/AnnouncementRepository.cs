@@ -30,7 +30,7 @@ namespace FlightApp.Data
             {
                 Title = title,
                 Content = content,
-                PassengerId = passenger.Id
+                PassengerId = passenger?.Id
             };
 
             string json = JsonConvert.SerializeObject(dto);
@@ -56,6 +56,6 @@ namespace FlightApp.Data
         public string Title { get; set; }
         [Required]
         public string Content { get; set; }
-        public int PassengerId { get; set; }
+        public int? PassengerId { get; set; }
     }
 }
