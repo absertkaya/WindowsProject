@@ -5,16 +5,16 @@
     xmlns:local="using:FlightApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <NavigationView x:Name="NavView" 
                     SelectionChanged="NavView_SelectionChanged" 
                     Loaded="NavView_Loaded"
                     IsBackButtonVisible="Collapsed"
-                    IsSettingsVisible="False">
+                    IsSettingsVisible="False"
+                    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <NavigationView.MenuItems>
-            <NavigationViewItem Tag="home" Icon="Home" Content="Home"/>
+            <NavigationViewItem Visibility="Collapsed" Tag="home" Icon="Home" Content="Home"/>
             <!-- passenger -->
             <NavigationViewItem Visibility="Collapsed" Tag="shop" Icon="Shop" Content="Shop"/>
             <NavigationViewItem Visibility="Collapsed" Tag="messenger" Icon="Message" Content="Messenger"/>
