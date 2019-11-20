@@ -18,5 +18,11 @@ namespace FlightApp.Utils
         {
             return INSTANCE;
         }
+
+        public void Reset()
+        {
+            User = null;
+            Token = null;
+        }
     }
 }

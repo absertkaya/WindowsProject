@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\AnnouncementRepository.cs" />
+    <Compile Include="Data\ShopRepository.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Enums\OrderStatus.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="ViewModel\FlightDetailsViewModel.cs" />
     <Compile Include="ViewModel\LoginPageViewModel.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
+    <Compile Include="ViewModel\ShopViewModel.cs" />
     <Compile Include="View\CreateAnnouncementView.xaml.cs">
       <DependentUpon>CreateAnnouncementView.xaml</DependentUpon>
     </Compile>
@@ -162,6 +164,9 @@
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\AnnouncementView.xaml.cs">
       <DependentUpon>AnnouncementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShopView.xaml.cs">
+      <DependentUpon>ShopView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +211,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\AnnouncementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShopView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
