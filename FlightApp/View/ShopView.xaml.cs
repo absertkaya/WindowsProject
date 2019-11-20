@@ -19,5 +19,10 @@ namespace FlightApp.View
             viewModel = new ShopViewModel();
             DataContext = viewModel;
         }
+
+        private void Show_Cart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            split.IsPaneOpen = !split.IsPaneOpen;
+        }
     }
 }

@@ -48,7 +48,6 @@ namespace FlightApp
                     }
                     else
                     {
-                        NavView_Navigate("home", new EntranceNavigationTransitionInfo());
                         switch (inst.User.Type)
                         {
                             case UserType.PASSENGER:
@@ -58,6 +57,7 @@ namespace FlightApp
                                 GenerateStaffMenu();
                                 break;
                         }
+                        NavView_Navigate("home", new EntranceNavigationTransitionInfo());
                     }
                 }
             };
@@ -67,7 +67,8 @@ namespace FlightApp
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
             NavView.SelectedItem = NavView.MenuItems[0];
-            NavView_Navigate("home", new EntranceNavigationTransitionInfo());
+            ContentFrame.Navigate(typeof(LoginPage), null, new EntranceNavigationTransitionInfo());
+            NavView.IsPaneOpen = false;
         }
 
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -123,8 +124,7 @@ namespace FlightApp
                      i.Tag.Equals("messenger") ||
                      i.Tag.Equals("music") ||
                      i.Tag.Equals("video") ||
-                     i.Tag.Equals("games") ||
-                     i.Tag.Equals("flightDetails")
+                     i.Tag.Equals("home") 
             );
 
             foreach (NavigationViewItem item in items) {
@@ -146,7 +146,7 @@ namespace FlightApp
                      i.Tag.Equals("handleOrder") ||
                      i.Tag.Equals("passengers") ||
                      i.Tag.Equals("createAnnouncement") ||
-                     i.Tag.Equals("flightDetails")
+                     i.Tag.Equals("home")
             );
 
             foreach (NavigationViewItem item in items)
@@ -170,12 +170,11 @@ namespace FlightApp
                      i.Tag.Equals("handleOrder") ||
                      i.Tag.Equals("passengers") ||
                      i.Tag.Equals("createAnnouncement") ||
-                     i.Tag.Equals("flightDetails") ||
                      i.Tag.Equals("shop") ||
                      i.Tag.Equals("messenger") ||
                      i.Tag.Equals("music") ||
                      i.Tag.Equals("video") ||
-                     i.Tag.Equals("games") 
+                     i.Tag.Equals("home")
             );
 
             foreach (NavigationViewItem item in items)

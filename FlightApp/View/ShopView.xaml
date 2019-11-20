@@ -6,32 +6,89 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:m="using:FlightApp.Model"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 
-    <SplitView>
-        <GridView ItemsSource="{Binding Products}">
-            <GridView.GroupStyle>
-                <GroupStyle>
-                    <GroupStyle.HeaderTemplate>
-                        <DataTemplate x:DataType="m:Product">
-                            <TextBlock Text="{Binding Type}" />
-                        </DataTemplate>
-                    </GroupStyle.HeaderTemplate>
-                </GroupStyle>
-            </GridView.GroupStyle>
+    <Page.Resources>
+        <DataTemplate x:Name="productCard" x:DataType="m:Product">
+            <StackPanel Margin="12,6,0,6">
+                <Image Source="{Binding Picture}" Height="150" Width="200" Stretch="UniformToFill" />
+                <StackPanel Margin="20,0,0,0">
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Text="{Binding PriceString}" HorizontalAlignment="Right" Width="200" Style="{StaticResource BodyTextBlockStyle}"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
 
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="m:Product">
-                    <StackPanel Margin="12,6,0,6">
-                        <Image Source="{Binding Picture}" Height="200" Width="200" />
-                        <StackPanel Margin="20,0,0,0">
-                            <TextBlock Text="{Binding Name}" Style="{StaticResource BaseTextBlockStyle}"/>
-                            <TextBlock Text="{Binding Price}" HorizontalAlignment="Right" Width="300" Style="{StaticResource BodyTextBlockStyle}"/>
-                        </StackPanel>
+    <SplitView x:Name="split" DisplayMode="Inline" PanePlacement="Right" OpenPaneLength="330">
+        <SplitView.Pane>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Shopping Cart" Style="{StaticResource SubheaderTextBlockStyle}" Margin="15" HorizontalAlignment="Center" />
+                <ScrollViewer Grid.Row="1">
+                    <TextBlock Height="6000" Text="555"/>
+                </ScrollViewer>
+                <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="15">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="15">
+                        <TextBlock FontWeight="Bold" Text="Total: " Margin="0,0,15,0"/>
+                        <TextBlock Text="€ 100.00" />
                     </StackPanel>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+                    <Button Width="290" Content="Order" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </SplitView.Pane>
+
+        <ScrollViewer>
+            <StackPanel>
+                <Button Style="{StaticResource AccentButtonStyle}" Click="Show_Cart">
+                    <StackPanel Orientation="Horizontal">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BF;" Margin="0,0,15,0"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="18" Text="Shopping Cart"/>
+                    </StackPanel>
+                </Button>
+                <TextBlock Text="Food" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                <Border BorderThickness="2" BorderBrush="{StaticResource ListBoxBorderThemeBrush}">
+                    <ListView
+                  ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True"
+                  ItemsSource="{Binding FoodProducts}" ItemTemplate="{StaticResource ResourceKey=productCard}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </Border>
+                <TextBlock Text="Drinks" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                <Border BorderThickness="2" BorderBrush="{StaticResource ListBoxBorderThemeBrush}">
+                    <ListView
+                  ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True"
+                  ItemsSource="{Binding DrinkProducts}" ItemTemplate="{StaticResource ResourceKey=productCard}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </Border>
+                <TextBlock Text="Snacks" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                <Border BorderThickness="2" BorderBrush="{StaticResource ListBoxBorderThemeBrush}">
+                    <ListView 
+                  ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True"
+                  ItemsSource="{Binding SnackProducts}" ItemTemplate="{StaticResource ResourceKey=productCard}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+        
     </SplitView>
-    
 </Page>
