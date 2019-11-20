@@ -11,13 +11,54 @@
 
     <Page.Resources>
         <DataTemplate x:Name="productCard" x:DataType="m:Product">
-            <StackPanel Margin="12,6,0,6">
+            <StackPanel Margin="0,0,0,5">
                 <Image Source="{Binding Picture}" Height="150" Width="200" Stretch="UniformToFill" />
-                <StackPanel Margin="20,0,0,0">
+                <StackPanel>
                     <TextBlock Text="{Binding Name}" Style="{StaticResource BaseTextBlockStyle}"/>
                     <TextBlock Text="{Binding PriceString}" HorizontalAlignment="Right" Width="200" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource AccentButtonStyle}" Width="40" Margin="0,10,10,5">
+                            <Button.Flyout>
+                                <Flyout>
+                                    <StackPanel>
+                                        <Image Source="{Binding Picture}" Width="400" Height="250" Stretch="UniformToFill"/>
+                                        <TextBlock Margin="15" Text="{Binding Name}" HorizontalAlignment="Center" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                                        <TextBlock Width="300" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Description}" HorizontalAlignment="Center" Style="{StaticResource BodyTextBlockStyle}"/>
+                                        <TextBlock Margin="15" Text="{Binding PriceString}" HorizontalAlignment="Center" Style="{StaticResource BaseTextBlockStyle}"/>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE721;"/>
+                        </Button>
+                        <Button Width="140" Margin="10,10,0,5" Content="Add to cart" Click="AddToCart"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
+        </DataTemplate>
+        
+        <DataTemplate x:Name="cartItemCard" x:DataType="m:OrderLine">
+            <Button Width="400" HorizontalContentAlignment="Left" Style="{StaticResource TextBlockButtonStyle}">
+                <Button.Flyout>
+                    <CommandBarFlyout Placement="BottomEdgeAlignedLeft">
+                        <AppBarButton Label="Decrement" Icon="Remove" ToolTipService.ToolTip="Decrement" Click="DecrementCart" />
+                        <AppBarButton Label="Increment" Icon="Add"  ToolTipService.ToolTip="Increment" Click="IncrementCart" />
+                        <AppBarButton Label="Delete" Icon="Delete" ToolTipService.ToolTip="Delete" Click="RemoveCart" />
+                    </CommandBarFlyout>
+                </Button.Flyout>
+                <StackPanel Margin="10" Orientation="Horizontal">
+                    <Image Source="{Binding Product.Picture}" Height="50" Width="80" Stretch="UniformToFill" />
+                    <StackPanel Margin="10,0,0,0">
+                        <TextBlock Text="{Binding Product.Name}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Amount}" Style="{StaticResource BaseTextBlockStyle}"/>
+                            <TextBlock Text="x" Margin="10,0,10,0" Style="{StaticResource BaseTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Product.PriceString}" Style="{StaticResource BaseTextBlockStyle}"/>
+                            <TextBlock Text="=" Margin="10,0,10,0" Style="{StaticResource BaseTextBlockStyle}"/>
+                            <TextBlock Text="{Binding SubPriceString}" Style="{StaticResource BaseTextBlockStyle}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Button>
         </DataTemplate>
     </Page.Resources>
 
@@ -30,13 +71,19 @@
                     <RowDefinition Height="100" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="Shopping Cart" Style="{StaticResource SubheaderTextBlockStyle}" Margin="15" HorizontalAlignment="Center" />
-                <ScrollViewer Grid.Row="1">
-                    <TextBlock Height="6000" Text="555"/>
-                </ScrollViewer>
+                <Border Grid.Row="1" BorderThickness="2" BorderBrush="LightGray">
+                    <ScrollViewer>
+                        <ListView SelectionMode="None" ItemsSource="{Binding ShoppingCart.OrderLines}" ItemTemplate="{StaticResource ResourceKey=cartItemCard}">
+                            <ListView.ItemContainerTransitions>
+                                <TransitionCollection/>
+                            </ListView.ItemContainerTransitions>
+                        </ListView>
+                    </ScrollViewer>
+                </Border>
                 <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="15">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="15">
                         <TextBlock FontWeight="Bold" Text="Total: " Margin="0,0,15,0"/>
-                        <TextBlock Text="€ 100.00" />
+                        <TextBlock Text="{Binding ShoppingCart.TotalPriceString}" />
                     </StackPanel>
                     <Button Width="290" Content="Order" HorizontalAlignment="Center"/>
                 </StackPanel>
@@ -45,7 +92,7 @@
 
         <ScrollViewer>
             <StackPanel>
-                <Button Style="{StaticResource AccentButtonStyle}" Click="Show_Cart">
+                <Button Style="{StaticResource AccentButtonStyle}" Click="ShowCart">
                     <StackPanel Orientation="Horizontal">
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BF;" Margin="0,0,15,0"/>
                         <TextBlock VerticalAlignment="Center" FontSize="18" Text="Shopping Cart"/>
@@ -53,7 +100,7 @@
                 </Button>
                 <TextBlock Text="Food" Style="{StaticResource SubheaderTextBlockStyle}"/>
                 <Border BorderThickness="2" BorderBrush="{StaticResource ListBoxBorderThemeBrush}">
-                    <ListView
+                    <ListView SelectionMode="None"
                   ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True"
                   ItemsSource="{Binding FoodProducts}" ItemTemplate="{StaticResource ResourceKey=productCard}">
                         <ListView.ItemsPanel>
@@ -65,7 +112,7 @@
                 </Border>
                 <TextBlock Text="Drinks" Style="{StaticResource SubheaderTextBlockStyle}"/>
                 <Border BorderThickness="2" BorderBrush="{StaticResource ListBoxBorderThemeBrush}">
-                    <ListView
+                    <ListView SelectionMode="None"
                   ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True"
                   ItemsSource="{Binding DrinkProducts}" ItemTemplate="{StaticResource ResourceKey=productCard}">
                         <ListView.ItemsPanel>
@@ -77,7 +124,7 @@
                 </Border>
                 <TextBlock Text="Snacks" Style="{StaticResource SubheaderTextBlockStyle}"/>
                 <Border BorderThickness="2" BorderBrush="{StaticResource ListBoxBorderThemeBrush}">
-                    <ListView 
+                    <ListView SelectionMode="None"
                   ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True"
                   ItemsSource="{Binding SnackProducts}" ItemTemplate="{StaticResource ResourceKey=productCard}">
                         <ListView.ItemsPanel>

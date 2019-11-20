@@ -14,6 +14,6 @@ namespace FlightApp.Model
         public decimal Price { get; set; }
         public ProductType Type { get; set; }
 
-        public string PriceString { get { return String.Format("€{0:0.00}", Price); } }
+        public string PriceString { get { return String.Format("€ {0:0.00}", Price); } }
     }
 }
