@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="FlightApp.View.ShopView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FlightApp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:m="using:FlightApp.Model"
+    mc:Ignorable="d">
+
+    <SplitView>
+        <GridView ItemsSource="{Binding Products}">
+            <GridView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate x:DataType="m:Product">
+                            <TextBlock Text="{Binding Type}" />
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </GridView.GroupStyle>
+
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="m:Product">
+                    <StackPanel Margin="12,6,0,6">
+                        <Image Source="{Binding Picture}" Height="200" Width="200" />
+                        <StackPanel Margin="20,0,0,0">
+                            <TextBlock Text="{Binding Name}" Style="{StaticResource BaseTextBlockStyle}"/>
+                            <TextBlock Text="{Binding Price}" HorizontalAlignment="Right" Width="300" Style="{StaticResource BodyTextBlockStyle}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </SplitView>
+    
+</Page>

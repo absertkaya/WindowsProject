@@ -19,7 +19,7 @@ namespace FlightApp
             ("home", typeof(HomePage)),
 
             ("announcements", typeof(AnnouncementView)),
-            ("shop", typeof(Page)),
+            ("shop", typeof(ShopView)),
             ("messenger", typeof(Page)),
             ("music", typeof(Page)),
             ("video", typeof(Page)),
@@ -44,6 +44,7 @@ namespace FlightApp
                     {
                         ContentFrame.Navigate(typeof(LoginPage), null, new EntranceNavigationTransitionInfo());
                         NavView.Header = "Login";
+                        UnloadMenu();
                     }
                     else
                     {
@@ -109,7 +110,7 @@ namespace FlightApp
 
         private void Logout(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-
+            _viewModel.Logout();
         }
         #endregion
 
@@ -160,6 +161,36 @@ namespace FlightApp
             NavViewFooter.Children.OfType<NavigationViewItem>()
                     .First(n => n.Tag.Equals("logout"))
                     .Visibility = Visibility.Visible;
+        }
+
+        private void UnloadMenu()
+        {
+            IEnumerable<NavigationViewItem> items = NavView.MenuItems.OfType<NavigationViewItem>().Where(i =>
+                     i.Tag.Equals("announcements") ||
+                     i.Tag.Equals("handleOrder") ||
+                     i.Tag.Equals("passengers") ||
+                     i.Tag.Equals("createAnnouncement") ||
+                     i.Tag.Equals("flightDetails") ||
+                     i.Tag.Equals("shop") ||
+                     i.Tag.Equals("messenger") ||
+                     i.Tag.Equals("music") ||
+                     i.Tag.Equals("video") ||
+                     i.Tag.Equals("games") 
+            );
+
+            foreach (NavigationViewItem item in items)
+            {
+                item.Visibility = Visibility.Collapsed;
+            }
+
+            NavViewFooter.Children.OfType<NavigationViewItem>()
+                    .First(n => n.Tag.Equals("login"))
+                    .Visibility = Visibility.Visible;
+
+            NavViewFooter.Children.OfType<NavigationViewItem>()
+                    .First(n => n.Tag.Equals("logout"))
+                    .Visibility = Visibility.Collapsed;
+
         }
         #endregion
 

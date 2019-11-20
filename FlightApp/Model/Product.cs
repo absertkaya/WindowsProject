@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FlightApp.Model
 {
@@ -12,5 +13,7 @@ namespace FlightApp.Model
         public string Picture { get; set; }
         public decimal Price { get; set; }
         public ProductType Type { get; set; }
+
+        public string PriceString { get { return String.Format("€{0:0.00}", Price); } }
     }
 }

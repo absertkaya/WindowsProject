@@ -4,18 +4,15 @@ namespace FlightApp.ViewModel
 {
     public class MainPageViewModel : ViewModelBase
     {
-        private int _accessLevel;
         private UserService _userService;
 
-        public int AccessLevel
-        {
-            get { return _accessLevel; }
-            private set { _accessLevel = value; RaisePropertyChanged(); }
+        public MainPageViewModel() {
+            _userService = UserService.GetInstance();
         }
 
-        public MainPageViewModel() {
-            _accessLevel = 0;
-            _userService = UserService.GetInstance();
+        public void Logout()
+        {
+            _userService.Reset();
         }
     }
 }
