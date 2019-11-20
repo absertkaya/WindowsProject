@@ -1,4 +1,5 @@
-﻿using FlightApp.ViewModel;
+﻿using FlightApp.Model;
+using FlightApp.ViewModel;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -23,6 +24,11 @@ namespace FlightApp.View
         private void Show_Cart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             split.IsPaneOpen = !split.IsPaneOpen;
+        }
+
+        private void Click_Product(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            MainPage.Instance.NavigateToProduct((sender as StackPanel).DataContext as Product);
         }
     }
 }

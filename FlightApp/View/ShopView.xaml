@@ -11,7 +11,7 @@
 
     <Page.Resources>
         <DataTemplate x:Name="productCard" x:DataType="m:Product">
-            <StackPanel Margin="12,6,0,6">
+            <StackPanel Margin="12,6,0,6" Tapped="Click_Product">
                 <Image Source="{Binding Picture}" Height="150" Width="200" Stretch="UniformToFill" />
                 <StackPanel Margin="20,0,0,0">
                     <TextBlock Text="{Binding Name}" Style="{StaticResource BaseTextBlockStyle}"/>
