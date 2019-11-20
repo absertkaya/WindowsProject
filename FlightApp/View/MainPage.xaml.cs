@@ -27,7 +27,7 @@ namespace FlightApp
             ("createAnnouncement", typeof(CreateAnnouncementView)),
             ("handleOrder", typeof(Page)),
             ("passengers", typeof(Page)),
-            ("flightDetails", typeof(Page))
+            ("flightDetails", typeof(FlightDetailsView))
         };
 
         public MainPage()

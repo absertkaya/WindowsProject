@@ -22,8 +22,6 @@ namespace FlightApp.Data
             return announcements;
         }
 
-
-
         public static async Task<bool> PostAnnouncement(string title, string content, Passenger passenger)
         {
             AnnouncementDTO dto = new AnnouncementDTO
