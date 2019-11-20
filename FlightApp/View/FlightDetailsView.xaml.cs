@@ -29,6 +29,12 @@ namespace FlightApp.View
         public FlightDetailsView()
         {
             this.InitializeComponent();
+            
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
             _vm = new FlightDetailsViewModel();
             DataContext = _vm;
         }

@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\AnnouncementRepository.cs" />
+    <Compile Include="Data\FlightRepository.cs" />
     <Compile Include="Data\ShopRepository.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Model\ApplicationUser.cs" />

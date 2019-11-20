@@ -9,6 +9,20 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Padding="10" Grid.Row="0" Grid.Column="0"  Text="Departure"/>
+        <TextBlock Padding="10" Grid.Row="0" Grid.Column="1"  Text="{Binding Flight.DepartureDest}"/>
+        <TextBlock Padding="10" Grid.Row="0" Grid.Column="2"  Text="{Binding Flight.DepartureTime}"/>
+        <TextBlock Padding="10" Grid.Row="1" Grid.Column="0"  Text="Arrival"/>
+        <TextBlock Padding="10" Grid.Row="1" Grid.Column="1"  Text="{Binding Flight.ArrivalDest}"/>
+        <TextBlock Padding="10" Grid.Row="1" Grid.Column="2"  Text="{Binding Flight.ArrivalTime}"/>
     </Grid>
 </Page>
