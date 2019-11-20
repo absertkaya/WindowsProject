@@ -35,6 +35,23 @@ namespace FlightApp.ViewModel
             }
         }
 
+        private async void LoadPersonalAnnouncements()
+        {
+            try
+            {
+                Announcements = await AnnouncementRepository.GetAllAsync();
+            }
+            catch (Exception e)
+            {
+                MessageDialog messageDialog = new MessageDialog($"Couldn't establish a connection to the database. \n{e.Message}");
+                messageDialog.Commands.Add(new UICommand("Try again", new UICommandInvokedHandler(this.CommandInvokedHandler)));
+                messageDialog.Commands.Add(new UICommand("Close"));
+                messageDialog.DefaultCommandIndex = 0;
+                messageDialog.CancelCommandIndex = 1;
+                await messageDialog.ShowAsync();
+            }
+        }
+
         private void CommandInvokedHandler(IUICommand command)
         {
             switch (command.Label)

@@ -22,12 +22,15 @@ namespace FlightApp.Data
             return announcements;
         }
 
-        public static async Task<bool> PostAnnouncement(string title, string content)
+
+
+        public static async Task<bool> PostAnnouncement(string title, string content, Passenger passenger)
         {
             AnnouncementDTO dto = new AnnouncementDTO
             {
                 Title = title,
-                Content = content
+                Content = content,
+                PassengerId = passenger.Id
             };
 
             string json = JsonConvert.SerializeObject(dto);
@@ -53,5 +56,6 @@ namespace FlightApp.Data
         public string Title { get; set; }
         [Required]
         public string Content { get; set; }
+        public int PassengerId { get; set; }
     }
 }

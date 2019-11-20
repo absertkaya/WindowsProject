@@ -1,4 +1,5 @@
-﻿using FlightApp.ViewModel;
+﻿using FlightApp.Model;
+using FlightApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,13 +30,20 @@ namespace FlightApp.View
         public CreateAnnouncementView()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
             _vm = new CreateAnnouncementViewModel();
             DataContext = _vm;
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _vm.PostAnnouncement();
+            fly.Hide();
+            _vm.PostAnnouncement((Passenger)this.cmb.SelectedValue);
         }
     }
 }

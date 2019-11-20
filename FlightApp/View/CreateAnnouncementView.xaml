@@ -5,15 +5,55 @@
     xmlns:local="using:FlightApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ml="using:FlightApp.Model"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-
-    <StackPanel MinWidth="500">
-        <TextBlock Text="Title"/>
-        <TextBox Text="{Binding Title, Mode=TwoWay}" Margin="0,0,0,10"/>
-        <TextBlock Text="Content"/>
-        <TextBox Text="{Binding Content, Mode=TwoWay}" Margin="0,0,0,10" Height="100"/>
-        <Button Content="Create" Click="Button_Click"/>
+    <StackPanel>
+        <Button Content="Create Announcement" Margin="0,0,0,10">
+            <Button.Flyout>
+                <Flyout x:Name="fly">
+                    <StackPanel MinWidth="300">
+                        <TextBlock Text="Title"/>
+                        <TextBox Text="{Binding Title, Mode=TwoWay}" Margin="0,0,0,10"/>
+                        <TextBlock Text="Content"/>
+                        <TextBox Text="{Binding Content, Mode=TwoWay}" Margin="0,0,0,10" Height="100"/>
+                        <TextBlock Text="Receiver"/>
+                        <ComboBox x:Name="cmb" ItemsSource="{Binding Passengers, Mode=TwoWay}"  Margin="0,0,0,10">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate x:DataType="ml:Passenger">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{x:Bind FirstName}" Style="{ThemeResource BaseTextBlockStyle}"/>
+                                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind LastName}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button Content="Create" Click="Button_Click"/>
+                    </StackPanel>
+                </Flyout>
+            </Button.Flyout>
+        </Button>
+        <ListView x:Name="lv" ItemsSource="{Binding Announcements, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="ml:Announcement">
+                    <Grid Margin="0,0,0,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" Text="{x:Bind Title}" Style="{ThemeResource BaseTextBlockStyle}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind Content}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackPanel>
 </Page>

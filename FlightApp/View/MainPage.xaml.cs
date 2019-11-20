@@ -142,7 +142,6 @@ namespace FlightApp
         private void GenerateStaffMenu()
         {
             IEnumerable<NavigationViewItem> items = NavView.MenuItems.OfType<NavigationViewItem>().Where(i =>
-                     i.Tag.Equals("announcements") ||
                      i.Tag.Equals("handleOrder") ||
                      i.Tag.Equals("passengers") ||
                      i.Tag.Equals("createAnnouncement") ||

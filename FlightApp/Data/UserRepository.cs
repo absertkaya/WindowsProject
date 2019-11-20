@@ -3,7 +3,9 @@ using FlightApp.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.Web.Http;
 
@@ -33,6 +35,16 @@ namespace FlightApp.Data
                 return true;
             }
             return false;
+        }
+
+        public static async Task<IList<Passenger>> GetAllPassengersAsync()
+        {
+            UserService serv = UserService.GetInstance();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
+            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Flight/{serv.User.FlightId}/get_passengers"));
+            IList<Passenger> passengers = JsonConvert.DeserializeObject<ObservableCollection<Passenger>>(json);
+            return passengers;
         }
 
         #region DTOs
