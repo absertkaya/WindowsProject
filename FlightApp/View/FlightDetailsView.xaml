@@ -12,6 +12,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -21,8 +23,15 @@
         <TextBlock Padding="10" Grid.Row="0" Grid.Column="0"  Text="Departure"/>
         <TextBlock Padding="10" Grid.Row="0" Grid.Column="1"  Text="{Binding Flight.DepartureDest}"/>
         <TextBlock Padding="10" Grid.Row="0" Grid.Column="2"  Text="{Binding Flight.DepartureTime}"/>
+        
         <TextBlock Padding="10" Grid.Row="1" Grid.Column="0"  Text="Arrival"/>
         <TextBlock Padding="10" Grid.Row="1" Grid.Column="1"  Text="{Binding Flight.ArrivalDest}"/>
         <TextBlock Padding="10" Grid.Row="1" Grid.Column="2"  Text="{Binding Flight.ArrivalTime}"/>
+
+        <TextBlock Padding="10" Grid.Row="2" Grid.Column="0"  Text="Weather"/>
+        <TextBlock Padding="10" Grid.Row="2" Grid.Column="1"  Text="{Binding Weather.WeatherType}"/>
+
+        <TextBlock Padding="10" Grid.Row="3" Grid.Column="0"  Text="Description"/>
+        <TextBlock Padding="10" Grid.Row="3" Grid.Column="1"  Text="{Binding Weather.Description}"/>
     </Grid>
 </Page>

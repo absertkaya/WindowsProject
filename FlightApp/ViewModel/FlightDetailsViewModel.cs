@@ -11,6 +11,13 @@ namespace FlightApp.ViewModel
 {
     public class FlightDetailsViewModel : ViewModelBase
     {
+        private Weather _weather;
+
+        public Weather Weather {
+            get { return _weather; }
+            set { _weather = value; }
+        }
+
         private Flight _flight;
 
         public Flight Flight {
@@ -23,11 +30,30 @@ namespace FlightApp.ViewModel
             LoadFlight();
         }
 
+        private async void LoadWeather(string city)
+        {
+            try
+            {
+                Weather = await FlightRepository.GetWeatherAsync(city);
+            }
+            catch (Exception e)
+            {
+                MessageDialog messageDialog = new MessageDialog($"Couldn't establish a connection to the database. \n{e.Message}");
+                messageDialog.Commands.Add(new UICommand("Try again", new UICommandInvokedHandler(this.CommandInvokedHandler)));
+                messageDialog.Commands.Add(new UICommand("Close"));
+                messageDialog.DefaultCommandIndex = 0;
+                messageDialog.CancelCommandIndex = 1;
+                await messageDialog.ShowAsync();
+            }
+        }
+
         private async void LoadFlight()
         {
             try
             {
                 Flight = await FlightRepository.GetFlightDetailsAsync();
+                string city = Flight.ArrivalDest.Split(" ")[0];
+                LoadWeather(city);
             }
             catch (Exception e)
             {

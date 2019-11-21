@@ -20,5 +20,14 @@ namespace FlightApp.Data
             Flight flight = JsonConvert.DeserializeObject<Flight>(json);
             return flight;
         }
+
+        public static async Task<Weather> GetWeatherAsync(string city)
+        {
+            UserService serv = UserService.GetInstance();
+            HttpClient client = new HttpClient();
+            string json = await client.GetStringAsync(new Uri($"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=8829a1e07622f065874303b2dcf9652d"));
+            Weather weather = JsonConvert.DeserializeObject<Weather>(json);
+            return weather;
+        }
     }
 }

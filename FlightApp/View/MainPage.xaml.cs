@@ -146,7 +146,8 @@ namespace FlightApp
                      i.Tag.Equals("handleOrder") ||
                      i.Tag.Equals("passengers") ||
                      i.Tag.Equals("createAnnouncement") ||
-                     i.Tag.Equals("home")
+                     i.Tag.Equals("home") ||
+                     i.Tag.Equals("flightDetails")
             );
 
             foreach (NavigationViewItem item in items)

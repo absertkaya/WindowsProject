@@ -129,6 +129,7 @@
     <Compile Include="Model\Enums\UserType.cs" />
     <Compile Include="Model\Friend.cs" />
     <Compile Include="Model\OrderLine.cs" />
+    <Compile Include="Model\Weather.cs" />
     <Compile Include="Utils\UserService.cs" />
     <Compile Include="ViewModel\CreateAnnouncementViewModel.cs" />
     <Compile Include="ViewModel\FlightDetailsViewModel.cs" />
