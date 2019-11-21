@@ -103,9 +103,10 @@ namespace FlightApp.ViewModel
                 if (placedOrder is null) throw new Exception("Order can't be empty");
 
                 ShoppingCart = new Order(_passenger);
+                if (_passenger.Orders is null) _passenger.Orders = new List<Order>();
                 _passenger.Orders.Add(placedOrder);
 
-                _hasOrders = true;
+                HasOrders = true;
                 MessageDialog messageDialog = new MessageDialog($"Thank you for your order!\nYour order is being processed by our staff members");
                 messageDialog.Commands.Add(new UICommand("Close"));
                 messageDialog.CancelCommandIndex = 0;
