@@ -68,12 +68,12 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="100" />
+                    <RowDefinition Height="110" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="Shopping Cart" Style="{StaticResource SubheaderTextBlockStyle}" Margin="15" HorizontalAlignment="Center" />
                 <Border Grid.Row="1" BorderThickness="2" BorderBrush="LightGray">
                     <ScrollViewer>
-                        <ListView SelectionMode="None" ItemsSource="{Binding ShoppingCart.OrderLines}" ItemTemplate="{StaticResource ResourceKey=cartItemCard}">
+                        <ListView SelectionMode="Single" ItemsSource="{Binding ShoppingCart.OrderLines}" ItemTemplate="{StaticResource ResourceKey=cartItemCard}">
                             <ListView.ItemContainerTransitions>
                                 <TransitionCollection/>
                             </ListView.ItemContainerTransitions>
@@ -82,22 +82,40 @@
                 </Border>
                 <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="15">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="15">
-                        <TextBlock FontWeight="Bold" Text="Total: " Margin="0,0,15,0"/>
-                        <TextBlock Text="{Binding ShoppingCart.TotalPriceString}" />
+                        <TextBlock VerticalAlignment="Bottom" FontSize="15" FontWeight="SemiBold"  Text="Total: " Margin="0,0,8,4"/>
+                        <TextBlock FontSize="26" Text="{Binding ShoppingCart.TotalPriceString}" />
                     </StackPanel>
-                    <Button Width="290" Content="Order" HorizontalAlignment="Center"/>
+                    <Button Width="290" Content="Order" HorizontalAlignment="Center">
+                        <Button.Flyout>
+                            <Flyout>
+                                <StackPanel>
+                                    <TextBlock Text="Are you sure you wish to place this order?"/>
+                                    <TextBlock Text="An invoice will be sent to your emailaddress." Margin="0,15,0,15"/>
+                                    <Button Content="Submit" Click="PlaceOrder"/>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
                 </StackPanel>
             </Grid>
         </SplitView.Pane>
 
         <ScrollViewer>
             <StackPanel>
-                <Button Style="{StaticResource AccentButtonStyle}" Click="ShowCart">
-                    <StackPanel Orientation="Horizontal">
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BF;" Margin="0,0,15,0"/>
-                        <TextBlock VerticalAlignment="Center" FontSize="18" Text="Shopping Cart"/>
-                    </StackPanel>
-                </Button>
+                <StackPanel Orientation="Horizontal">
+                    <Button Style="{StaticResource AccentButtonStyle}" Click="ShowCart">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7BF;" Margin="0,0,15,0"/>
+                            <TextBlock VerticalAlignment="Center" FontSize="18" Text="Shopping Cart"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource AccentButtonStyle}" IsEnabled="{Binding HasOrders}" Margin="15,0,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE81C;" Margin="0,0,15,0"/>
+                            <TextBlock VerticalAlignment="Center" FontSize="18" Text="Show History"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
                 <TextBlock Text="Food" Style="{StaticResource SubheaderTextBlockStyle}"/>
                 <Border BorderThickness="2" BorderBrush="{StaticResource ListBoxBorderThemeBrush}">
                     <ListView SelectionMode="None"

@@ -45,5 +45,10 @@ namespace FlightApp.View
         {
             viewModel.RemoveFromCart(((sender as AppBarButton).DataContext as OrderLine).Product);
         }
+
+        private void PlaceOrder(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            viewModel.PlaceOrder();
+        }
     }
 }
