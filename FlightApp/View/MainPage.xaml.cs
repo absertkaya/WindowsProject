@@ -124,6 +124,7 @@ namespace FlightApp
                      i.Tag.Equals("messenger") ||
                      i.Tag.Equals("music") ||
                      i.Tag.Equals("video") ||
+                     i.Tag.Equals("flightDetails") ||
                      i.Tag.Equals("home") 
             );
 
@@ -146,8 +147,8 @@ namespace FlightApp
                      i.Tag.Equals("handleOrder") ||
                      i.Tag.Equals("passengers") ||
                      i.Tag.Equals("createAnnouncement") ||
-                     i.Tag.Equals("home") ||
-                     i.Tag.Equals("flightDetails")
+                     i.Tag.Equals("flightDetails") ||
+                     i.Tag.Equals("home")
             );
 
             foreach (NavigationViewItem item in items)
@@ -175,6 +176,7 @@ namespace FlightApp
                      i.Tag.Equals("messenger") ||
                      i.Tag.Equals("music") ||
                      i.Tag.Equals("video") ||
+                     i.Tag.Equals("flightDetails") ||
                      i.Tag.Equals("home")
             );
 

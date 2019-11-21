@@ -9,5 +9,7 @@ namespace FlightApp.Model
         public IList<Message> SentMessages { get; set; }
         public IList<Message> ReceivedMessages { get; set; }
         public IList<Friend> Friends { get; set; }
+
+        public Order ShoppingCart { get; set; }
     }
 }
