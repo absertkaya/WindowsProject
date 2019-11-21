@@ -14,24 +14,35 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Padding="10" Grid.Row="0" Grid.Column="0"  Text="Departure"/>
+        <TextBlock Padding="10" Grid.Row="0" Grid.Column="0"  Text="Departure" Style="{ThemeResource BaseTextBlockStyle}"/>
         <TextBlock Padding="10" Grid.Row="0" Grid.Column="1"  Text="{Binding Flight.DepartureDest}"/>
         <TextBlock Padding="10" Grid.Row="0" Grid.Column="2"  Text="{Binding Flight.DepartureTime}"/>
-        
-        <TextBlock Padding="10" Grid.Row="1" Grid.Column="0"  Text="Arrival"/>
+
+        <TextBlock Padding="10" Grid.Row="1" Grid.Column="0"  Text="Arrival" Style="{ThemeResource BaseTextBlockStyle}"/>
         <TextBlock Padding="10" Grid.Row="1" Grid.Column="1"  Text="{Binding Flight.ArrivalDest}"/>
         <TextBlock Padding="10" Grid.Row="1" Grid.Column="2"  Text="{Binding Flight.ArrivalTime}"/>
 
-        <TextBlock Padding="10" Grid.Row="2" Grid.Column="0"  Text="Weather"/>
-        <TextBlock Padding="10" Grid.Row="2" Grid.Column="1"  Text="{Binding Weather.WeatherType}"/>
+        <TextBlock Padding="20, 10, 10, 10" Grid.Row="2" Grid.Column="1"  Text="Destination Weather" Style="{ThemeResource BaseTextBlockStyle}"/>
 
-        <TextBlock Padding="10" Grid.Row="3" Grid.Column="0"  Text="Description"/>
-        <TextBlock Padding="10" Grid.Row="3" Grid.Column="1"  Text="{Binding Weather.Description}"/>
+        <TextBlock Padding="10" Grid.Row="3" Grid.Column="0"  Text="Weather" Style="{ThemeResource BaseTextBlockStyle}"/>
+        <TextBlock Padding="10" Grid.Row="3" Grid.Column="1"  Text="{Binding Weather.WeatherType}"/>
+
+        <TextBlock Padding="10" Grid.Row="4" Grid.Column="0"  Text="Description" Style="{ThemeResource BaseTextBlockStyle}"/>
+        <TextBlock Padding="10" Grid.Row="4" Grid.Column="1"  Text="{Binding Weather.Description}"/>
+
+        <TextBlock Padding="10" Grid.Row="5" Grid.Column="0"  Text="Avg Temperature °C" Style="{ThemeResource BaseTextBlockStyle}"/>
+        <TextBlock Padding="10" Grid.Row="5" Grid.Column="1"  Text="{Binding Weather.Temp}"/>
+
+        <TextBlock Padding="10" Grid.Row="6" Grid.Column="0"  Text="Humidity %" Style="{ThemeResource BaseTextBlockStyle}"/>
+        <TextBlock Padding="10" Grid.Row="6" Grid.Column="1"  Text="{Binding Weather.Humidity}"/>
     </Grid>
 </Page>

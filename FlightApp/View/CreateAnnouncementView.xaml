@@ -18,16 +18,18 @@
                         <TextBlock Text="Content"/>
                         <TextBox Text="{Binding Content, Mode=TwoWay}" Margin="0,0,0,10" Height="100"/>
                         <TextBlock Text="Receiver"/>
-                        <ComboBox x:Name="cmb" ItemsSource="{Binding Passengers, Mode=TwoWay}"  Margin="0,0,0,10">
+                        <ComboBox x:Name="cmb" ItemsSource="{Binding Passengers, Mode=TwoWay}"  Margin="0,0,0,10" PlaceholderText="Global Announcement">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate x:DataType="ml:Passenger">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{x:Bind FirstName}" Style="{ThemeResource BaseTextBlockStyle}"/>
-                                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind LastName}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                        <TextBlock Padding="2" Grid.Column="2" Text="{x:Bind FirstName}" Style="{ThemeResource BaseTextBlockStyle}"/>
+                                        <TextBlock Padding="2" Grid.Column="1" Text="{x:Bind LastName}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                                        <TextBlock Padding="2" Grid.Column="0" Text="{x:Bind SeatNr}" Style="{ThemeResource BaseTextBlockStyle}"/>
                                     </Grid>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
@@ -51,6 +53,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="1" Text="{x:Bind Title}" Style="{ThemeResource BaseTextBlockStyle}"/>
                         <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind Content}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                        
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
