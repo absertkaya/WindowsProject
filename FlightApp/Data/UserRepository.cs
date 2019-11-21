@@ -1,4 +1,5 @@
-﻿using FlightApp.Model;
+﻿using FlightApp.Data.DTOs;
+using FlightApp.Model;
 using FlightApp.Utils;
 using Newtonsoft.Json;
 using System;
@@ -70,6 +71,7 @@ namespace FlightApp.Data
             public ClassType SeatClass { get; set; }
             public int FlightId { get; set; }
             public UserType Type { get; set; }
+            public IList<OrderDTO> Orders { get; set; }
 
             public ApplicationUser ToUser()
             {
@@ -86,7 +88,8 @@ namespace FlightApp.Data
                             Friends = this.Friends,
                             Seat = new Seat { Nr = SeatNr, ClassType = SeatClass },
                             Type = this.Type,
-                            FlightId = this.FlightId
+                            FlightId = this.FlightId,
+                            Orders = this.Orders.Select(o => o.ToOrder()).ToList()
                         };
                     case UserType.STAFF:
                         return new Staff

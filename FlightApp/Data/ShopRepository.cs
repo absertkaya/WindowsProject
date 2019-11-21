@@ -1,4 +1,5 @@
-﻿using FlightApp.Model;
+﻿using FlightApp.Data.DTOs;
+using FlightApp.Model;
 using FlightApp.Utils;
 using Newtonsoft.Json;
 using System;
@@ -33,7 +34,7 @@ namespace FlightApp.Data
             
             if (res.IsSuccessStatusCode)
             {
-                PostOrderResponseDTO response = JsonConvert.DeserializeObject<PostOrderResponseDTO>(res.Content.ToString());
+                OrderDTO response = JsonConvert.DeserializeObject<OrderDTO>(res.Content.ToString());
                 return response.ToOrder();
             }
             return null;
@@ -51,78 +52,6 @@ namespace FlightApp.Data
             }
         }
         //Receive
-        private class PostOrderResponseDTO
-        {
-            public int Id { get; set; }
-            public DateTime TimeStamp { get; set; }
-            public IList<OrderLineDTO> OrderLines { get; set; }
-            public OrderStatus OrderStatus { get; set; }
-            public PassengerDTO Customer { get; set; }
-
-            public Order ToOrder()
-            {
-                return new Order(Customer.ToPassenger())
-                {
-                    Id = this.Id,
-                    TimeStamp = this.TimeStamp,
-                    OrderLines = this.OrderLines.Select(o => o.ToOrderLine()).ToList(),
-                    OrderStatus = this.OrderStatus
-                };
-            }
-        }
-        private class OrderLineDTO
-        {
-            public Product Product { get; set; }
-            public int ProductId { get; set; }
-            public int Amount { get; set; }
-
-            public static OrderLineDTO FromOrderLine(OrderLine orderLine)
-            {
-                return new OrderLineDTO
-                {
-                    ProductId = orderLine.Product.Id,
-                    Amount = orderLine.Amount
-                };
-            }
-            public OrderLine ToOrderLine()
-            {
-                return new OrderLine(Product)
-                {
-                    Amount = this.Amount
-                };
-            }
-        }
-        private class PassengerDTO
-        {
-            public int Id { get; set; }
-            public string LastName { get; set; }
-            public string FirstName { get; set; }
-            public DateTime BirthDate { get; set; }
-            public SeatDTO Seat { get; set; }
-
-            public Passenger ToPassenger()
-            {
-                return new Passenger
-                {
-                    Id = this.Id,
-                    LastName = this.LastName,
-                    FirstName = this.FirstName,
-                    BirthDate = this.BirthDate,
-                    Seat = this.Seat.ToSeat()
-                };
-            }
-        }
-        private class SeatDTO
-        {
-            public int Id { get; set; }
-            public int Nr { get; set; }
-            public ClassType ClassType { get; set; }
-
-            public Seat ToSeat()
-            {
-                return new Seat { Id = this.Id, Nr = this.Nr, ClassType = this.ClassType };
-            }
-        }
         #endregion
     }
 }
