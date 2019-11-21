@@ -26,8 +26,33 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             string json = await client.GetStringAsync(new Uri($"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=8829a1e07622f065874303b2dcf9652d"));
-            Weather weather = JsonConvert.DeserializeObject<Weather>(json);
+            WeatherBulkDTO bulk = JsonConvert.DeserializeObject<WeatherBulkDTO>(json);
+            Weather weather = new Weather()
+            {
+                WeatherType = bulk.Weather[0].Main,
+                Description = bulk.Weather[0].Description,
+                Temp = bulk.Main.Temp - 272.15M,
+                Humidity = bulk.Main.Humidity
+            };
             return weather;
+        }
+
+        public class WeatherBulkDTO
+        {
+            public MainDTO Main { get; set; }
+            public IList<WeatherDTO> Weather { get; set; }
+        }
+
+        public class WeatherDTO
+        {
+            public string Main { get; set; }
+            public string Description { get; set; }
+        }
+
+        public class MainDTO
+        {
+            public decimal Temp { get; set; }
+            public int Humidity { get; set; }
         }
     }
 }

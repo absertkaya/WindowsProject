@@ -15,7 +15,7 @@ namespace FlightApp.ViewModel
 
         public Weather Weather {
             get { return _weather; }
-            set { _weather = value; }
+            set { _weather = value; RaisePropertyChanged(); }
         }
 
         private Flight _flight;
