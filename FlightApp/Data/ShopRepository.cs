@@ -73,13 +73,14 @@ namespace FlightApp.Data
         private class OrderLineDTO
         {
             public Product Product { get; set; }
+            public int ProductId { get; set; }
             public int Amount { get; set; }
 
             public static OrderLineDTO FromOrderLine(OrderLine orderLine)
             {
                 return new OrderLineDTO
                 {
-                    Product = orderLine.Product,
+                    ProductId = orderLine.Product.Id,
                     Amount = orderLine.Amount
                 };
             }
