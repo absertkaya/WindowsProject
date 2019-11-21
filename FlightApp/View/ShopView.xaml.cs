@@ -28,6 +28,7 @@ namespace FlightApp.View
 
         private void AddToCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            split.IsPaneOpen = true;
             viewModel.AddToCart((sender as Button).DataContext as Product);
         }
 
@@ -49,6 +50,11 @@ namespace FlightApp.View
         private void PlaceOrder(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             viewModel.PlaceOrder();
+        }
+
+        private void ShowHistory(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            MainPage.Instance.NavigateToOrderHistory();
         }
     }
 }

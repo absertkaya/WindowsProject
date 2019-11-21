@@ -29,10 +29,13 @@ namespace FlightApp
             ("passengers", typeof(Page)),
             ("flightDetails", typeof(FlightDetailsView))
         };
+        private static MainPage _instance;
+        public static MainPage Instance { get { return _instance; } }
 
         public MainPage()
         {
             this.InitializeComponent();
+            if (_instance is null) _instance = this;
             _viewModel = new MainPageViewModel();
             DataContext = _viewModel;
 
@@ -112,6 +115,13 @@ namespace FlightApp
         private void Logout(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             _viewModel.Logout();
+        }
+
+        public void NavigateToOrderHistory()
+        {
+            NavView.SelectedItem = null;
+            ContentFrame.Navigate(typeof(OrderHistoryPage), null, new EntranceNavigationTransitionInfo());
+            NavView.Header = "Order History";
         }
         #endregion
 
