@@ -7,7 +7,7 @@ namespace FlightApp.View
 {
     public sealed partial class ShopView : Page
     {
-        public ShopViewModel ViewModel { get; set; }
+        public ShopViewModel viewModel { get; set; }
 
         public ShopView()
         {
@@ -17,8 +17,8 @@ namespace FlightApp.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            ViewModel = new ShopViewModel();
-            DataContext = ViewModel;
+            viewModel = new ShopViewModel();
+            DataContext = viewModel;
         }
 
         private void ShowCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -28,27 +28,33 @@ namespace FlightApp.View
 
         private void AddToCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ViewModel.AddToCart((sender as Button).DataContext as Product);
+            split.IsPaneOpen = true;
+            viewModel.AddToCart((sender as Button).DataContext as Product);
         }
 
         private void IncrementCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ViewModel.AddToCart(((sender as AppBarButton).DataContext as OrderLine).Product);
+            viewModel.AddToCart(((sender as AppBarButton).DataContext as OrderLine).Product);
         }
 
         private void DecrementCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ViewModel.DecrementFromCart(((sender as AppBarButton).DataContext as OrderLine).Product);
+            viewModel.DecrementFromCart(((sender as AppBarButton).DataContext as OrderLine).Product);
         }
 
         private void RemoveCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ViewModel.RemoveFromCart(((sender as AppBarButton).DataContext as OrderLine).Product);
+            viewModel.RemoveFromCart(((sender as AppBarButton).DataContext as OrderLine).Product);
         }
 
         private void PlaceOrder(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ViewModel.PlaceOrder();
+            viewModel.PlaceOrder();
+        }
+
+        private void ShowHistory(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            MainPage.Instance.NavigateToOrderHistory();
         }
     }
 }

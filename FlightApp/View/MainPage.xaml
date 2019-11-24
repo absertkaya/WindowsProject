@@ -36,6 +36,6 @@
                 <NavigationViewItem Visibility="Collapsed" Tag="logout" Tapped="Logout" Icon="Permissions" Content="Log out"/>
             </StackPanel>
         </NavigationView.PaneFooter>
-        <Frame x:Name="ContentFrame" Margin="20" Navigated="On_Navigated" HorizontalAlignment="Left" Width="Auto" Height="Auto" VerticalAlignment="Top"/>
+        <Frame x:Name="ContentFrame" Margin="20" Navigated="On_Navigated" HorizontalAlignment="Center" Width="Auto" Height="Auto" VerticalAlignment="Top"/>
     </NavigationView>
 </Page>
