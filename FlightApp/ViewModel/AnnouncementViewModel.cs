@@ -18,7 +18,7 @@ namespace FlightApp.ViewModel
             LoadAnnouncements();
         }
 
-        private async void LoadAnnouncements()
+        protected async void LoadAnnouncements()
         {
             try
             {

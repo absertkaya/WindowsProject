@@ -56,6 +56,7 @@ namespace FlightApp.ViewModel
                     messageDialog.CancelCommandIndex = 0;
                     await messageDialog.ShowAsync();
                 }
+                LoadAnnouncements();
             }
             catch (Exception e)
             {

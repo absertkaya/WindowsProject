@@ -44,6 +44,7 @@ namespace FlightApp.ViewModel
                     messageDialog.CancelCommandIndex = 0;
                     await messageDialog.ShowAsync();
                 }
+                LoadSeats();
             }
             catch (Exception e)
             {
