@@ -37,6 +37,25 @@ namespace FlightApp.Data
             return weather;
         }
 
+        public static async Task<IList<Seat>> GetAllSeatsAsync()
+        {
+            UserService serv = UserService.GetInstance();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
+            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Flight/{serv.User.FlightId}/get_seats"));
+            IList<Seat> seats = JsonConvert.DeserializeObject<IList<Seat>>(json);
+            return seats;
+        }
+
+        public static async Task<bool> PostSwap(Seat from, Seat to)
+        {
+            UserService serv = UserService.GetInstance();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
+            HttpResponseMessage res = await client.PostAsync(new Uri($"http://localhost:49681/api/Flight/move_passenger/{from.Id}/{to.Id}"), null);
+            return res.IsSuccessStatusCode;
+        }
+
         public class WeatherBulkDTO
         {
             public MainDTO Main { get; set; }

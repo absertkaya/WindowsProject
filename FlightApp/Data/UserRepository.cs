@@ -44,7 +44,7 @@ namespace FlightApp.Data
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
             string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Flight/{serv.User.FlightId}/get_passengers"));
-            IList<Passenger> passengers = JsonConvert.DeserializeObject<ObservableCollection<Passenger>>(json);
+            IList<Passenger> passengers = JsonConvert.DeserializeObject<IList<Passenger>>(json);
             return passengers;
         }
 

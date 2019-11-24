@@ -39,12 +39,7 @@ namespace FlightApp.Data
             HttpResponseMessage res = await client.PostAsync(new Uri($"http://localhost:49681/api/Announcement/create_by_flight/{serv.User.FlightId}"),
                 new HttpStringContent(json, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
 
-            if (res.IsSuccessStatusCode)
-            {
-                return true;
-            }
-
-            return false;
+            return res.IsSuccessStatusCode;
         }
     }
 

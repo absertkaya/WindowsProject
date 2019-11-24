@@ -7,7 +7,7 @@ namespace FlightApp.View
 {
     public sealed partial class ShopView : Page
     {
-        public ShopViewModel viewModel { get; set; }
+        public ShopViewModel ViewModel { get; set; }
 
         public ShopView()
         {
@@ -17,8 +17,8 @@ namespace FlightApp.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            viewModel = new ShopViewModel();
-            DataContext = viewModel;
+            ViewModel = new ShopViewModel();
+            DataContext = ViewModel;
         }
 
         private void ShowCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -28,27 +28,27 @@ namespace FlightApp.View
 
         private void AddToCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            viewModel.AddToCart((sender as Button).DataContext as Product);
+            ViewModel.AddToCart((sender as Button).DataContext as Product);
         }
 
         private void IncrementCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            viewModel.AddToCart(((sender as AppBarButton).DataContext as OrderLine).Product);
+            ViewModel.AddToCart(((sender as AppBarButton).DataContext as OrderLine).Product);
         }
 
         private void DecrementCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            viewModel.DecrementFromCart(((sender as AppBarButton).DataContext as OrderLine).Product);
+            ViewModel.DecrementFromCart(((sender as AppBarButton).DataContext as OrderLine).Product);
         }
 
         private void RemoveCart(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            viewModel.RemoveFromCart(((sender as AppBarButton).DataContext as OrderLine).Product);
+            ViewModel.RemoveFromCart(((sender as AppBarButton).DataContext as OrderLine).Product);
         }
 
         private void PlaceOrder(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            viewModel.PlaceOrder();
+            ViewModel.PlaceOrder();
         }
     }
 }
