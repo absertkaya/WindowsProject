@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="FlightApp.View.MessengerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FlightApp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:FlightApp.Model"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Hor>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer >
+            <ListView ItemsSource="{Binding Friends}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Passenger">
+                        <StackPanel PointerReleased="StackPanel_PointerReleased">
+                            <Image Source="{x:Bind Picture}"/>
+                            <TextBlock>
+                                <Run Text="{x:Bind FirstName}"/>
+                                <Run Text=" "/>
+                                <Run Text="{x:Bind LastName}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+        <StackPanel x:Name="sv" Grid.Column="1" Visibility="Collapsed">
+            <TextBox x:Name="msgBox" Margin="0,0,0,10" PlaceholderText="Enter your message here."/>
+            <Button Content="Send" Click="Button_Click"/>
+            <ScrollViewer>
+                <ListView ItemsSource="{Binding Messages}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Message">
+                            <StackPanel Margin="10">
+                                <TextBlock TextWrapping="Wrap" Margin="0,0,0,3" MaxWidth="330">
+                                <Run Text="{x:Bind Sender.FirstName}"/>
+                                <Run Text="{x:Bind Sender.LastName}"/>
+                                <Run Text=":"/>
+                                <Run Text="{x:Bind Timestamp}"/>
+                                </TextBlock>
+                                <TextBlock Text="{x:Bind Content}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -137,6 +137,8 @@
     <Compile Include="ViewModel\FlightDetailsViewModel.cs" />
     <Compile Include="ViewModel\LoginPageViewModel.cs" />
     <Compile Include="ViewModel\MainPageViewModel.cs" />
+    <Compile Include="ViewModel\ManagePassengersViewModel.cs" />
+    <Compile Include="ViewModel\MessengerViewModel.cs" />
     <Compile Include="ViewModel\OrderHistoryViewModel.cs" />
     <Compile Include="ViewModel\ShopViewModel.cs" />
     <Compile Include="View\CreateAnnouncementView.xaml.cs">
@@ -169,6 +171,12 @@
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\AnnouncementView.xaml.cs">
       <DependentUpon>AnnouncementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManagePassengersView.xaml.cs">
+      <DependentUpon>ManagePassengersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessengerView.xaml.cs">
+      <DependentUpon>MessengerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\OrderHistoryPage.xaml.cs">
       <DependentUpon>OrderHistoryPage.xaml</DependentUpon>
@@ -219,6 +227,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\AnnouncementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManagePassengersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MessengerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

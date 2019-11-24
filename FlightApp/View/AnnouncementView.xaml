@@ -8,25 +8,24 @@
     xmlns:m="using:FlightApp.Model"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <ListView x:Name="lv" ItemsSource="{Binding Announcements, Mode=TwoWay}">
-        <ListView.ItemTemplate>
-            <DataTemplate x:DataType="m:Announcement">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="1" Text="{x:Bind Title}" Style="{ThemeResource BaseTextBlockStyle}"/>
-                    <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind Content}" Style="{ThemeResource BodyTextBlockStyle}"/>
-                </Grid>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    
-    
+    <ScrollViewer>
+        <ListView x:Name="lv" ItemsSource="{Binding Announcements, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="m:Announcement">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" Text="{x:Bind Title}" Style="{ThemeResource BaseTextBlockStyle}"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind Content}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ScrollViewer>
 </Page>

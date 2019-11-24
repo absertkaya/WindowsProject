@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Web.Http;
 
 namespace FlightApp.Data
 {
@@ -47,6 +47,44 @@ namespace FlightApp.Data
             return seats;
         }
 
+        public static async Task<IList<Passenger>> GetFriendsAsync()
+        {
+            UserService serv = UserService.GetInstance();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
+            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Flight/friends/{serv.User.FlightId}/"));
+            IList<Passenger> friends = JsonConvert.DeserializeObject<IList<Passenger>>(json);
+            return friends;
+        }
+
+        public static async Task<bool> PostMessage(Passenger friend, string content)
+        {
+
+            MessageDTO dto = new MessageDTO
+            {
+                Content = content
+            };
+
+            string json = JsonConvert.SerializeObject(dto);
+
+            UserService serv = UserService.GetInstance();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
+            HttpResponseMessage res = await client.PostAsync(new Uri($"http://localhost:49681/api/Flight/messages/{friend.Id}"), 
+                new HttpStringContent(json, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
+            return res.IsSuccessStatusCode;
+        }
+
+        public static async Task<IList<Message>> GetMessagesAsync(Passenger friend)
+        {
+            UserService serv = UserService.GetInstance();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
+            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Flight/messages/{friend.Id}"));
+            IList<Message> messages = JsonConvert.DeserializeObject<IList<Message>>(json);
+            return messages;
+        }
+
         public static async Task<bool> PostSwap(Seat from, Seat to)
         {
             UserService serv = UserService.GetInstance();
@@ -54,6 +92,11 @@ namespace FlightApp.Data
             client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
             HttpResponseMessage res = await client.PostAsync(new Uri($"http://localhost:49681/api/Flight/move_passenger/{from.Id}/{to.Id}"), null);
             return res.IsSuccessStatusCode;
+        }
+
+        public class MessageDTO
+        {
+            public string Content { get; set; }
         }
 
         public class WeatherBulkDTO

@@ -39,24 +39,26 @@
                 </Flyout>
             </Button.Flyout>
         </Button>
-        <ListView x:Name="lv" ItemsSource="{Binding Announcements, Mode=TwoWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="ml:Announcement">
-                    <Grid Margin="0,0,0,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="1" Text="{x:Bind Title}" Style="{ThemeResource BaseTextBlockStyle}"/>
-                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind Content}" Style="{ThemeResource BodyTextBlockStyle}"/>
-                        
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ScrollViewer>
+            <ListView x:Name="lv" ItemsSource="{Binding Announcements, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="ml:Announcement">
+                        <Grid Margin="0,0,0,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Text="{x:Bind Title}" Style="{ThemeResource BaseTextBlockStyle}"/>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind Content}" Style="{ThemeResource BodyTextBlockStyle}"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
     </StackPanel>
 </Page>

@@ -11,5 +11,6 @@ namespace FlightApp.Model
         public IList<Friend> Friends { get; set; }
         public int SeatNr { get; set; }
         public Order ShoppingCart { get; set; }
+        public string Picture { get; set; }
     }
 }
