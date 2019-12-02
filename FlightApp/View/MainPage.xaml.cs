@@ -25,7 +25,7 @@ namespace FlightApp
             ("video", typeof(Page)),
             ("games", typeof(Page)),
             ("createAnnouncement", typeof(CreateAnnouncementView)),
-            ("handleOrder", typeof(Page)),
+            ("handleOrder", typeof(OrderPage)),
             ("passengers", typeof(ManagePassengersView)),
             ("flightDetails", typeof(FlightDetailsView))
         };

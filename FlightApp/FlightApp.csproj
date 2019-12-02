@@ -139,6 +139,7 @@
     <Compile Include="ViewModel\MainPageViewModel.cs" />
     <Compile Include="ViewModel\ManagePassengersViewModel.cs" />
     <Compile Include="ViewModel\MessengerViewModel.cs" />
+    <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\OrderHistoryViewModel.cs" />
     <Compile Include="ViewModel\ShopViewModel.cs" />
     <Compile Include="View\CreateAnnouncementView.xaml.cs">
@@ -177,6 +178,9 @@
     </Compile>
     <Compile Include="View\MessengerView.xaml.cs">
       <DependentUpon>MessengerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrderPage.xaml.cs">
+      <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\OrderHistoryPage.xaml.cs">
       <DependentUpon>OrderHistoryPage.xaml</DependentUpon>
@@ -237,6 +241,10 @@
     <Page Include="View\MessengerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OrderPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\OrderHistoryPage.xaml">
       <SubType>Designer</SubType>

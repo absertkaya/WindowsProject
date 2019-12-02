@@ -102,7 +102,8 @@ namespace FlightApp.ViewModel
                 Order placedOrder = await ShopRepository.PostOrder(ShoppingCart);
                 if (placedOrder is null) throw new Exception("Order can't be empty");
 
-                ShoppingCart = new Order(_passenger);
+                _passenger.ShoppingCart = new Order(_passenger);
+                RefreshCart();
                 if (_passenger.Orders is null) _passenger.Orders = new List<Order>();
                 _passenger.Orders.Add(placedOrder);
 

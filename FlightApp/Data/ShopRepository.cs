@@ -31,13 +31,32 @@ namespace FlightApp.Data
             client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
             HttpResponseMessage res = await client.PostAsync(new Uri($"http://localhost:49681/api/Shop/create_order/{serv.User.FlightId}"),
                 new HttpStringContent(content, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
-            
+
             if (res.IsSuccessStatusCode)
             {
                 OrderDTO response = JsonConvert.DeserializeObject<OrderDTO>(res.Content.ToString());
                 return response.ToOrder();
             }
             return null;
+        }
+
+        public static async Task AcceptOrderAsync(Order order)
+        {
+            UserService serv = UserService.GetInstance();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
+            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Shop/accept_order/{order.Id}/"));
+            IList<OrderDTO> orders = JsonConvert.DeserializeObject<ObservableCollection<OrderDTO>>(json);
+        }
+
+        public static async Task<List<Order>> GetOrdersAsync()
+        {
+            UserService serv = UserService.GetInstance();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
+            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Shop/{serv.User.FlightId}/get_orders"));
+            IList<OrderDTO> orders = JsonConvert.DeserializeObject<ObservableCollection<OrderDTO>>(json);
+            return orders.Select(o => o.ToOrder()).ToList();
         }
 
         #region DTOs
