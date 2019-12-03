@@ -123,6 +123,7 @@
     <Compile Include="Data\DTOs\OrderDTO.cs" />
     <Compile Include="Data\DTOs\PassengerDTO.cs" />
     <Compile Include="Data\FlightRepository.cs" />
+    <Compile Include="Data\EntertainmentRepository.cs" />
     <Compile Include="Data\ShopRepository.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
@@ -130,6 +131,8 @@
     <Compile Include="Model\Enums\ProductType.cs" />
     <Compile Include="Model\Enums\UserType.cs" />
     <Compile Include="Model\Friend.cs" />
+    <Compile Include="Model\Movie.cs" />
+    <Compile Include="Model\Music.cs" />
     <Compile Include="Model\OrderLine.cs" />
     <Compile Include="Model\Weather.cs" />
     <Compile Include="Utils\UserService.cs" />

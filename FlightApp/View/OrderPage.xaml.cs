@@ -31,9 +31,9 @@ namespace FlightApp.View
             else btnAccept.Visibility = Visibility.Visible;
         }
 
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Button_ClickAsync(object sender, RoutedEventArgs e)
         {
-            viewModel.HandleOrderAsync();
+            await viewModel.HandleOrderAsync();
         }
     }
 }

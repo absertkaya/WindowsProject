@@ -72,7 +72,7 @@
                                 <TextBlock VerticalAlignment="Bottom" FontSize="15" FontWeight="SemiBold"  Text="Total: " Margin="0,0,8,4"/>
                                 <TextBlock FontSize="26" Text="{Binding SelectedOrder.TotalPriceString}" />
                             </StackPanel>
-                            <Button x:Name="btnAccept" Click="Button_Click" HorizontalAlignment="Center" Width="350" Content="Accept"/>
+                            <Button x:Name="btnAccept" Click="Button_ClickAsync" HorizontalAlignment="Center" Width="350" Content="Accept"/>
                         </StackPanel>
                     </Grid>
                 </SplitView.Pane>
