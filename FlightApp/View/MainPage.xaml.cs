@@ -21,7 +21,7 @@ namespace FlightApp
             ("announcements", typeof(AnnouncementView)),
             ("shop", typeof(ShopView)),
             ("messenger", typeof(MessengerView)),
-            ("music", typeof(Page)),
+            ("music", typeof(EntertainmentView)),
             ("video", typeof(Page)),
             ("games", typeof(Page)),
             ("createAnnouncement", typeof(CreateAnnouncementView)),

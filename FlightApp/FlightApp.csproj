@@ -144,6 +144,7 @@
     <Compile Include="ViewModel\MessengerViewModel.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\OrderHistoryViewModel.cs" />
+    <Compile Include="ViewModel\EntertainmentViewModel.cs" />
     <Compile Include="ViewModel\ShopViewModel.cs" />
     <Compile Include="View\CreateAnnouncementView.xaml.cs">
       <DependentUpon>CreateAnnouncementView.xaml</DependentUpon>
@@ -188,6 +189,9 @@
     <Compile Include="View\OrderHistoryPage.xaml.cs">
       <DependentUpon>OrderHistoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EntertainmentView.xaml.cs">
+      <DependentUpon>EntertainmentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ShopView.xaml.cs">
       <DependentUpon>ShopView.xaml</DependentUpon>
     </Compile>
@@ -199,6 +203,16 @@
     <None Include="FlightApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Files\1.mp3" />
+    <Content Include="Assets\Files\10.mp3" />
+    <Content Include="Assets\Files\2.mp3" />
+    <Content Include="Assets\Files\3.mp3" />
+    <Content Include="Assets\Files\4.mp3" />
+    <Content Include="Assets\Files\5.mp3" />
+    <Content Include="Assets\Files\6.mp3" />
+    <Content Include="Assets\Files\7.mp3" />
+    <Content Include="Assets\Files\8.mp3" />
+    <Content Include="Assets\Files\9.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -252,6 +266,10 @@
     <Page Include="View\OrderHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntertainmentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ShopView.xaml">
       <SubType>Designer</SubType>

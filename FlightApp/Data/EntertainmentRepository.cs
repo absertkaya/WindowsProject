@@ -47,10 +47,10 @@ namespace FlightApp.Data
         }
         private class MusicDTO
         {
-            public int Id { get; private set; }
-            public string Title { get; private set; }
-            public string Artist { get; private set; }
-            public string Poster { get; private set; }
+            public int Id { get; set; }
+            public string Title { get; set; }
+            public string Artist { get; set; }
+            public string Poster { get; set; }
 
             public Music ToMusic()
             {
