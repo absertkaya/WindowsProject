@@ -16,18 +16,15 @@ namespace FlightApp
     {
         private MainPageViewModel _viewModel;
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type page)> {
-            ("home", typeof(HomePage)),
+            ("home", typeof(FlightDetailsView)),
 
             ("announcements", typeof(AnnouncementView)),
             ("shop", typeof(ShopView)),
             ("messenger", typeof(MessengerView)),
             ("music", typeof(EntertainmentView)),
-            ("video", typeof(Page)),
-            ("games", typeof(Page)),
             ("createAnnouncement", typeof(CreateAnnouncementView)),
             ("handleOrder", typeof(OrderPage)),
-            ("passengers", typeof(ManagePassengersView)),
-            ("flightDetails", typeof(FlightDetailsView))
+            ("passengers", typeof(ManagePassengersView))
         };
         private static MainPage _instance;
         public static MainPage Instance { get { return _instance; } }
@@ -133,8 +130,6 @@ namespace FlightApp
                      i.Tag.Equals("shop") ||
                      i.Tag.Equals("messenger") ||
                      i.Tag.Equals("music") ||
-                     i.Tag.Equals("video") ||
-                     i.Tag.Equals("flightDetails") ||
                      i.Tag.Equals("home") 
             );
 
@@ -157,7 +152,6 @@ namespace FlightApp
                      i.Tag.Equals("handleOrder") ||
                      i.Tag.Equals("passengers") ||
                      i.Tag.Equals("createAnnouncement") ||
-                     i.Tag.Equals("flightDetails") ||
                      i.Tag.Equals("home")
             );
 
@@ -185,8 +179,6 @@ namespace FlightApp
                      i.Tag.Equals("shop") ||
                      i.Tag.Equals("messenger") ||
                      i.Tag.Equals("music") ||
-                     i.Tag.Equals("video") ||
-                     i.Tag.Equals("flightDetails") ||
                      i.Tag.Equals("home")
             );
 

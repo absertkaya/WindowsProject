@@ -16,8 +16,8 @@
         <NavigationView.MenuItems>
             <NavigationViewItem Visibility="Collapsed" Tag="home" Icon="Home" Content="Home"/>
             <!-- passenger -->
-            <NavigationViewItem Visibility="Collapsed" Tag="shop" Icon="Shop" Content="Shop"/>
             <NavigationViewItem Visibility="Collapsed" Tag="messenger" Icon="Message" Content="Messenger"/>
+            <NavigationViewItem Visibility="Collapsed" Tag="shop" Icon="Shop" Content="Shop"/>
             <NavigationViewItem Visibility="Collapsed" Tag="music" Icon="Audio" Content="Music"/>
             <NavigationViewItem Visibility="Collapsed" Tag="video" Icon="Video" Content="Video"/>
             <NavigationViewItem Visibility="Collapsed" Tag="games" Icon="Play" Content="Games"/>
