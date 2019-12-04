@@ -23,11 +23,22 @@ namespace FlightApp.View
             DataContext = viewModel;
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            MusicPlayer.Source = null;
+        }
+
         private void Music_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Music music = (sender as ListView).SelectedItem as Music;
             MusicPlayer.Source = MediaSource.CreateFromUri(
                 new Uri($"ms-appx:///Assets/Files/{music.Source}"));
+        }
+
+        private void Movie_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MainPage.Instance.NavigateToMoviePlayer((sender as ListView).SelectedItem as Movie);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace FlightApp.Model
         public string Poster { get; private set; }
         public string Trailer { get; private set; }
 
+        public string Source { get { return $"{Id}.mp4"; } }
+
         public Movie(int id, string title, DateTime releaseDate, int runtime, string description, string director, string poster, string trailer)
         {
             Id = id;

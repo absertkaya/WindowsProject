@@ -35,7 +35,7 @@
         <StackPanel>
             <TextBlock Text="Movies" Style="{StaticResource SubheaderTextBlockStyle}"/>
             <Border BorderThickness="2" BorderBrush="{StaticResource ListBoxBorderThemeBrush}">
-                <ListView SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                <ListView SelectionMode="Single" SelectionChanged="Movie_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.IsHorizontalRailEnabled="True"
                   ItemsSource="{Binding Movies}" ItemTemplate="{StaticResource ResourceKey=movieCard}">
                     <ListView.ItemsPanel>

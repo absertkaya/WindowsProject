@@ -66,7 +66,6 @@ namespace FlightApp
         #region Navigation
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            NavView.SelectedItem = NavView.MenuItems[0];
             ContentFrame.Navigate(typeof(LoginPage), null, new EntranceNavigationTransitionInfo());
             NavView.IsPaneOpen = false;
         }
@@ -119,6 +118,13 @@ namespace FlightApp
             NavView.SelectedItem = null;
             ContentFrame.Navigate(typeof(OrderHistoryPage), null, new EntranceNavigationTransitionInfo());
             NavView.Header = "Order History";
+        }
+
+        public void NavigateToMoviePlayer(Movie movie)
+        {
+            NavView.SelectedItem = null;
+            ContentFrame.Navigate(typeof(MoviePlayerView), movie, new EntranceNavigationTransitionInfo());
+            NavView.Header = "Movie Player";
         }
         #endregion
 
