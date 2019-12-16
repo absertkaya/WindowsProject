@@ -16,7 +16,7 @@ namespace FlightApp.Data
         public static async Task<IList<Product>> GetAllProductsAsync()
         {
             HttpClient client = new HttpClient();
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Shop/get_products"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Shop/get_products"));
             IList<Product> products = JsonConvert.DeserializeObject<ObservableCollection<Product>>(json);
             return products;
         }
@@ -29,7 +29,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
-            HttpResponseMessage res = await client.PostAsync(new Uri($"http://localhost:49681/api/Shop/create_order/{serv.User.FlightId}"),
+            HttpResponseMessage res = await client.PostAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Shop/create_order/{serv.User.FlightId}"),
                 new HttpStringContent(content, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
 
             if (res.IsSuccessStatusCode)
@@ -45,7 +45,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Shop/accept_order/{order.Id}/"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Shop/accept_order/{order.Id}/"));
             IList<OrderDTO> orders = JsonConvert.DeserializeObject<ObservableCollection<OrderDTO>>(json);
         }
 
@@ -54,7 +54,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Shop/{serv.User.FlightId}/get_orders"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Shop/{serv.User.FlightId}/get_orders"));
             IList<OrderDTO> orders = JsonConvert.DeserializeObject<ObservableCollection<OrderDTO>>(json);
             return orders.Select(o => o.ToOrder()).ToList();
         }

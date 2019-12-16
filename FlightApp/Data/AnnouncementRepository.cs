@@ -17,7 +17,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Announcement/get_by_flight/{serv.User.FlightId}"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Announcement/get_by_flight/{serv.User.FlightId}"));
             IList<Announcement> announcements = JsonConvert.DeserializeObject<ObservableCollection<Announcement>>(json);
             return announcements;
         }
@@ -36,7 +36,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
-            HttpResponseMessage res = await client.PostAsync(new Uri($"http://localhost:49681/api/Announcement/create_by_flight/{serv.User.FlightId}"),
+            HttpResponseMessage res = await client.PostAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Announcement/create_by_flight/{serv.User.FlightId}"),
                 new HttpStringContent(json, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
 
             return res.IsSuccessStatusCode;

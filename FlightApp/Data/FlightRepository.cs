@@ -16,7 +16,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Flight/detail/{serv.User.FlightId}"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Flight/detail/{serv.User.FlightId}"));
             Flight flight = JsonConvert.DeserializeObject<Flight>(json);
             return flight;
         }
@@ -42,7 +42,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Flight/{serv.User.FlightId}/get_seats"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Flight/{serv.User.FlightId}/get_seats"));
             IList<Seat> seats = JsonConvert.DeserializeObject<IList<Seat>>(json);
             return seats;
         }
@@ -52,7 +52,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Flight/friends/{serv.User.FlightId}/"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Flight/friends/{serv.User.FlightId}/"));
             IList<Passenger> friends = JsonConvert.DeserializeObject<IList<Passenger>>(json);
             return friends;
         }

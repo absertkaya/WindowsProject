@@ -14,7 +14,7 @@ namespace FlightApp.Data
         public static async Task<IList<Movie>> GetAllMoviesAsync()
         {
             HttpClient client = new HttpClient();
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Entertainment/get_movies"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Entertainment/get_movies"));
             IList<MovieDTO> movies = JsonConvert.DeserializeObject<ObservableCollection<MovieDTO>>(json);
             return movies.Select(m => m.ToMovie()).ToList();
         }
@@ -22,7 +22,7 @@ namespace FlightApp.Data
         public static async Task<IList<Music>> GetAllMusicAsync()
         {
             HttpClient client = new HttpClient();
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Entertainment/get_music"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Entertainment/get_music"));
             IList<MusicDTO> music = JsonConvert.DeserializeObject<ObservableCollection<MusicDTO>>(json);
             return music.Select(m => m.ToMusic()).ToList();
         }

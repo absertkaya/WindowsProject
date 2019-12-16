@@ -24,7 +24,7 @@ namespace FlightApp.Data
             string content = JsonConvert.SerializeObject(loginDTO);
 
             HttpClient client = new HttpClient();
-            HttpResponseMessage res = await client.PostAsync(new Uri("http://localhost:49681/api/Account"),
+            HttpResponseMessage res = await client.PostAsync(new Uri("https://flightappapi.azurewebsites.net/api/Account"),
                 new HttpStringContent(content, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
 
             if (res.IsSuccessStatusCode)
@@ -43,7 +43,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Flight/{serv.User.FlightId}/get_passengers"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Flight/{serv.User.FlightId}/get_passengers"));
             IList<Passenger> passengers = JsonConvert.DeserializeObject<IList<Passenger>>(json);
             return passengers;
         }
