@@ -25,7 +25,7 @@ namespace FlightApp.Data
         {
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
-            string json = await client.GetStringAsync(new Uri($"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=8829a1e07622f065874303b2dcf9652d"));
+            string json = await client.GetStringAsync(new Uri($"https://api.openweathermap.org/data/2.5/weather?q={city}&appid=8829a1e07622f065874303b2dcf9652d"));
             WeatherBulkDTO bulk = JsonConvert.DeserializeObject<WeatherBulkDTO>(json);
             Weather weather = new Weather()
             {
@@ -52,7 +52,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
-            string json = await client.GetStringAsync(new Uri($"http://flightappapi.azurewebsites.net/api/Flight/friends/{serv.User.FlightId}/"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Flight/friends/{serv.User.FlightId}/"));
             IList<Passenger> friends = JsonConvert.DeserializeObject<IList<Passenger>>(json);
             return friends;
         }
