@@ -52,7 +52,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
-            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Flight/friends/{serv.User.FlightId}/"));
+            string json = await client.GetStringAsync(new Uri($"http://flightappapi.azurewebsites.net/api/Flight/friends/{serv.User.FlightId}/"));
             IList<Passenger> friends = JsonConvert.DeserializeObject<IList<Passenger>>(json);
             return friends;
         }
@@ -70,7 +70,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
-            HttpResponseMessage res = await client.PostAsync(new Uri($"http://localhost:49681/api/Flight/messages/{friend.Id}"), 
+            HttpResponseMessage res = await client.PostAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Flight/messages/{friend.Id}"), 
                 new HttpStringContent(json, Windows.Storage.Streams.UnicodeEncoding.Utf8, "application/json"));
             return res.IsSuccessStatusCode;
         }
@@ -80,7 +80,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {serv.Token}");
-            string json = await client.GetStringAsync(new Uri($"http://localhost:49681/api/Flight/messages/{friend.Id}"));
+            string json = await client.GetStringAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Flight/messages/{friend.Id}"));
             IList<Message> messages = JsonConvert.DeserializeObject<IList<Message>>(json);
             return messages;
         }
@@ -90,7 +90,7 @@ namespace FlightApp.Data
             UserService serv = UserService.GetInstance();
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", string.Format("Bearer {0}", serv.Token));
-            HttpResponseMessage res = await client.PostAsync(new Uri($"http://localhost:49681/api/Flight/move_passenger/{from.Id}/{to.Id}"), null);
+            HttpResponseMessage res = await client.PostAsync(new Uri($"https://flightappapi.azurewebsites.net/api/Flight/move_passenger/{from.Id}/{to.Id}"), null);
             return res.IsSuccessStatusCode;
         }
 
